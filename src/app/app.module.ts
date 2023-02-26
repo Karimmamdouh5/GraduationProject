@@ -1,3 +1,4 @@
+import { CartSnackBarComponent } from './Pages/Shop/Components/cart-snack-bar/cart-snack-bar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+
 
 @NgModule({
   declarations: [
@@ -55,6 +58,8 @@ import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component
     PicturesSectionComponent,
     DescriptionSectionComponent,
     CartModelComponent,
+    CartSnackBarComponent,
+
 
 
   ],
@@ -65,7 +70,8 @@ import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component
     FontAwesomeModule,
     MatTreeModule,
     MatIconModule,
-    BrowserAnimationsModule
+    MatSnackBarModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],

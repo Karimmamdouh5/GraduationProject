@@ -1,5 +1,7 @@
+import { CartSnackBarComponent } from './../cart-snack-bar/cart-snack-bar.component';
 import { CartService } from 'src/app/Services/cart.service';
 import { Component } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-shop-products',
@@ -7,6 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./shop-products.component.scss']
 })
 export class ShopProductsComponent {
+
+  durationInSeconds = 1;
+
   products=
   [
     {
@@ -32,9 +37,14 @@ export class ShopProductsComponent {
 
       }
    ];
-  constructor(public CartSrv:CartService)
+  constructor(public CartSrv:CartService,private _snackBar: MatSnackBar)
   {
 
   }
 
+  openSnackBar() {
+    this._snackBar.openFromComponent(CartSnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+}
 }
