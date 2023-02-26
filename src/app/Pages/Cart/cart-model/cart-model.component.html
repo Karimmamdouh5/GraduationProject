@@ -1,0 +1,105 @@
+<section style="background-color:   #e9eef5;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-8">
+                  <div class="p-5">
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                      <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                      <h5 class="mb-0 text-muted">{{this.CartSrv.CartItems.length}} items</h5>
+                    </div>
+                    <hr class="my-4">
+                  <div *ngFor="let item of this.CartSrv.CartItems">
+                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                      <div class="col-md-2 col-lg-2 col-xl-2">
+                        <img
+                          src="assets/img/{{item.Image}}"
+                          class="img-fluid rounded-3">
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-3">
+                        <h5 class="text-black mb-0">{{item.NAME}}</h5>
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <button class="btn btn-link px-2"
+                        (click)="this.CartSrv.DecreaseItemQuantity(item)" >
+                          <i class="fa fa-minus"></i>
+                        </button>
+
+                        <input readonly id="form1" min="0" name="quantity" value="{{item.Quantity}}" type="number"
+                          class="form-control form-control-sm" />
+
+                        <button class="btn btn-link px-2"
+                        (click)="this.CartSrv.IncreaseItemQuantity(item)">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h5 class="mb-0">{{item.Price}}EGP</h5>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                        <a (click)="this.CartSrv.DeleteItem(item)" class="text-muted"><i class="fa fa-times"></i></a>
+                      </div>
+                    </div>
+
+                    <hr class="my-4">
+                  </div>
+                    <div class="pt-5">
+                      <h5 class="mb-0">
+                        <a (click)="this.Navigation('Shop');" class="text-body">
+                          <i style="margin: 5px;" class="fa fa-arrow-left"></i>Back to shop</a></h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 bg-grey">
+                  <div class="p-5">
+                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between mb-4">
+                      <h5 class="text-uppercase">items {{this.CartSrv.CartItems.length}}</h5>
+                      <h5>{{this.CartSrv.TotalPrice}}EGP</h5>
+                    </div>
+
+                    <h5 class="text-uppercase mb-3">Shipping</h5>
+
+                    <div class="mb-4 pb-2">
+                      <select class="select">
+                        <option value="1">Standard-Delivery- €5.00</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                      </select>
+                    </div>
+
+                    <h5 class="text-uppercase mb-3">Give code</h5>
+
+                    <div class="mb-5">
+                      <div class="form-outline">
+                        <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Examplea2">Enter your code</label>
+                      </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between mb-5">
+                      <h5 class="text-uppercase">Total price</h5>
+                      <h5>{{this.CartSrv.TotalPrice}}EGP</h5>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-block btn-lg"
+                      data-mdb-ripple-color="dark">
+                      Check Out</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

@@ -1,0 +1,101 @@
+<!--
+  <div class="row">
+    <h1 class="h2 pb-4">Categories</h1>
+    <ul class="list-unstyled templatemo-accordion">
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                CPU
+                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul class="collapse show list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Men</a></li>
+                <li><a class="text-decoration-none" href="#">Women</a></li>
+            </ul>
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                RAM
+                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul id="collapseTwo" class="collapse list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Sport</a></li>
+                <li><a class="text-decoration-none" href="#">Luxury</a></li>
+            </ul>
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Motherboard
+                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul id="collapseThree" class="collapse list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Bag</a></li>
+                <li><a class="text-decoration-none" href="#">Sweather</a></li>
+                <li><a class="text-decoration-none" href="#">Sunglass</a></li>
+
+            </ul>
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Monitors
+                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul class="collapse show list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Men</a></li>
+                <li><a class="text-decoration-none" href="#">Women</a></li>
+            </ul>
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Power supplies
+                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul class="collapse show list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Men</a></li>
+                <li><a class="text-decoration-none" href="#">Women</a></li>
+            </ul>
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Coolers
+                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul class="collapse show list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Men</a></li>
+                <li><a class="text-decoration-none" href="#">Women</a></li>
+            </ul>
+        </li>
+        <li class="pb-3">
+            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                Storage
+                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </a>
+            <ul class="collapse show list-unstyled pl-3" style="display: none;">
+                <li><a class="text-decoration-none" href="#">Men</a></li>
+                <li><a class="text-decoration-none" href="#">Women</a></li>
+            </ul>
+        </li>
+
+
+    </ul>
+</div>
+-->
+<div class="row">
+  <h1 class="h2 pb-4">Categories</h1>
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <!-- use a disabled button to provide padding for tree leaf -->
+    <mat-icon mat-icon-button disabled></mat-icon>
+    {{node.name}}
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+      <mat-icon [attr.aria-label]="'Toggle ' + node.name" mat-icon-button matTreeNodeToggle class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    {{node.name}}
+  </mat-tree-node>
+</mat-tree>
+
+</div>
