@@ -9,7 +9,7 @@
           <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+      <div class="align-self-left collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
           <div class="flex-fill">
               <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                   <li class="nav-item">
@@ -26,6 +26,17 @@
                   </li>
               </ul>
           </div>
+          <div style="float:right;margin-right: 100px;margin-left: 100px;">
+            <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+              <li class="nav-item">
+                <a class="nav-link" (click)="this.Navigation('BuildYourPc')">Build your pc</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="this.Navigation('BuyPcOrLaptop')">Buy pc/laptop</a>
+          </li>
+            </ul>
+          </div>
+
           <div class="navbar align-self-center d-flex">
               <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                   <div class="input-group">
@@ -56,6 +67,10 @@
               </a>
           </div>
       </div>
+
+
+
+
 
   </div>
 </nav>
