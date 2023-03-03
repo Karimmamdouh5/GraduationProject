@@ -7,6 +7,7 @@ import { MainLayoutComponent } from './Shared/MainLayout/main-layout/main-layout
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
+import { RecommendationBundles } from './Classes/recommendation-bundles';
 
 const routes: Routes =
 [
@@ -18,7 +19,8 @@ const routes: Routes =
     {path:'Shop',component:ShopPageComponent},
     {path:'Contact',component:ContactPageComponent},
     {path:'ShopSingle',component:ShopSinglePageComponent},
-    {path:'Cart',component:CartModelComponent}
+    {path:'Cart',component:CartModelComponent},
+    {path:'BuyPcOrLaptop',component:RecommendationBundles}
 
   ]}
 ];

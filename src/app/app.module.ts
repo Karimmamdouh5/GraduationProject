@@ -30,7 +30,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component'
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     DescriptionSectionComponent,
     CartModelComponent,
     CartSnackBarComponent,
+    RecommendationBundlesComponent,
 
 
 
