@@ -11,7 +11,7 @@ purpose='';
 DeviceType='';
 Purposes=
 [
-  'Low end gaming','Mid end gaming','High end gaming','Education','Content creator'
+  'Low end gaming','Mid Range gaming','High end gaming','Education','Content creator'
 ];
 ComputerTypes=['Pc','Laptop'];
   constructor() { }
@@ -30,7 +30,7 @@ ComputerTypes=['Pc','Laptop'];
       Case + PSU : Thermaltake V200 + 600W
       `,
       Price:10499 ,
-      Image:'cases.jpg',
+      Image:'Lowendgamingpcbuild1.jpg',
       DeviceType:'Pc'
     },
     {
@@ -47,12 +47,12 @@ ComputerTypes=['Pc','Laptop'];
       Case + PSU : NX292+550W
       `,
       Price:24999 ,
-      Image:'cases.jpg',
+      Image:'MidRangeGamingpcbuild1.jpg',
       DeviceType:'Pc'
     },
     {
       Name:'Mid Range Gaming pc build #2' ,
-      Purpose:'Mid range gaming',
+      Purpose:'Mid Range gaming',
       Description:
       `
       Processor: Core i5 12400F
@@ -64,7 +64,7 @@ ComputerTypes=['Pc','Laptop'];
       CASE & PSU: DF800+650W
       `,
       Price:28999 ,
-      Image:'cases.jpg',
+      Image:'Midrangegamingpcbuild2.jpg',
       DeviceType:'Pc'
     },
     {
@@ -81,7 +81,7 @@ ComputerTypes=['Pc','Laptop'];
       Case + PSU: Corsair 220T + Cougar 600W White
       `,
       Price:38700 ,
-      Image:'cases.jpg',
+      Image:'HIGHENDGAMINGPCBUILD1.jpg',
       DeviceType:'Pc'
     },
     {
@@ -99,7 +99,7 @@ ComputerTypes=['Pc','Laptop'];
       Case + PS : DF800+650W
       `,
       Price:43900 ,
-      Image:'cases.jpg',
+      Image:'HighEndGamingpc2.jpg',
       DeviceType:'Pc'
     },
     {
@@ -117,7 +117,7 @@ ComputerTypes=['Pc','Laptop'];
       Cooling: XIGMATEK Liquid Killer X 240 ARGB
       `,
       Price:10499 ,
-      Image:'cases.jpg',
+      Image:'ContentCreatorPCBUILD.jpg',
       DeviceType:'Pc'
     },
     {
@@ -133,7 +133,7 @@ ComputerTypes=['Pc','Laptop'];
       SKU: X415EP-FP007W
       `,
       Price:22000 ,
-      Image:'cases.jpg',
+      Image:'EducationProgrammingEntertainment.jpg',
       DeviceType:'Laptop'
     },
     {
@@ -149,7 +149,7 @@ ComputerTypes=['Pc','Laptop'];
       SKU:D3500QC-OLED007W
       `,
       Price:30999 ,
-      Image:'cases.jpg',
+      Image:'EducationProgrammingEntertainment2.jpg',
       DeviceType:'Laptop'
     },
     {
@@ -165,7 +165,7 @@ ComputerTypes=['Pc','Laptop'];
       SKU: G15-5511
       `,
       Price:10499 ,
-      Image:'cases.jpg',
+      Image:'GraphicdesigningrenderingGaming.jpg',
       DeviceType:'Laptop'
     },
   ];
