@@ -9,10 +9,9 @@
                   <div class="p-5">
                     <div class="d-flex justify-content-between align-items-center mb-5">
                       <h1  class="fw-bold mb-0 text-black">Purpose</h1>
-                      <mat-form-field appearance="fill">
-                        <mat-label>Select an option</mat-label>
-                        <mat-select value="{{this.purpose}}">
-                          <mat-option *ngFor="let purp of this.Purposes" (click)="this.Recommend(purp)">{{purp}}</mat-option>
+                      <mat-form-field style="text-align: center;margin-right: 50px;" appearance="fill">
+                        <mat-select value="" [(ngModel)]="this.purpose" [ngModelOptions]="{standalone:true}" >
+                          <mat-option *ngFor="let purp of this.Purposes" (click)="this.Recommend(purp)" [value]="purp">{{purp}}</mat-option>
                         </mat-select>
                       </mat-form-field>
                     </div>
