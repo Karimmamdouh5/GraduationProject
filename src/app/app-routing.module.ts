@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
 import { RecommendationBundles } from './Classes/recommendation-bundles';
+import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component';
 
 const routes: Routes =
 [
@@ -20,7 +21,7 @@ const routes: Routes =
     {path:'Contact',component:ContactPageComponent},
     {path:'ShopSingle',component:ShopSinglePageComponent},
     {path:'Cart',component:CartModelComponent},
-    {path:'BuyPcOrLaptop',component:RecommendationBundles}
+    {path:'BuyPcOrLaptop',component:RecommendationBundlesComponent}
 
   ]}
 ];

@@ -32,8 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component'
-
-
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +74,8 @@ import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components
     MatIconModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule
 
   ],
   providers: [],
