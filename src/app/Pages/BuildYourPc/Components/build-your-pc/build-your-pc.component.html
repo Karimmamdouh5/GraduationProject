@@ -1,0 +1,413 @@
+
+<!--<section style="background-color:#e9eef5;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-12">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+
+                  </div>
+                  <div class="row">
+
+                    <div class="col-md-3 ">
+
+                      <ul>
+
+
+
+                        <li>
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Motherboard</mat-label>
+                          <mat-form-field style="margin-left: 10px;">
+                            <input (change)="this.Filter('Motherboard',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                            <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+                            <mat-option *ngFor="let Product of this.Motherboards">
+                              {{Product.NAME}}
+                            </mat-option>
+                            </mat-form-field>
+                        </li>
+
+                        <br>
+
+                        <li>
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">CPU</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                            <input (change)="this.Filter('CPU',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('CPU','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.CPUs">
+                              {{Product.NAME}}
+                            </mat-option>
+
+                        </mat-form-field>
+                        </li>
+
+                        <br>
+
+                        <li>
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">RAM</mat-label>
+
+                        <mat-form-field style="margin-left: 10px;">
+
+                          <input onchange="this.Filter('RAM',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('RAM','');"  placeholder="select an option" [(ngModel)]=""></mat-select>
+                          <mat-option *ngFor="let Product of this.RAMs" >{{Product.NAME}}</mat-option>
+                        </mat-form-field>
+                        </li>
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">SSD</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                          <input (change)="this.Filter('SSD',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.SSDs">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+                        <br>
+
+                      <li>
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">HDD</mat-label>
+
+                        <mat-form-field style="margin-left: 10px;">
+                          <input (change)="this.Filter('HDD',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');"  placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.HDDs">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                        </mat-form-field>
+                      </li>
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">VGA</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                            <input (change)="this.Filter('VGA',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');"  placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.VGAs">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Case</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                            <input (change)="this.Filter('Case',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.Cases">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+                        <br>
+
+                        <li>
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">PowerSupply</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                            <input (change)="this.Filter('PowerSupply',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.PowerSupplys">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+                        </li>
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Pc Cooling</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                            <input (change)="this.Filter('Pc Cooling',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.PcCoolings">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Monitor</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                          <input (change)="this.Filter('Monitor',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.Monitors">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+                        <br>
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Headphone</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                          <input (change)="this.Filter('HeadPhone',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.Headphones">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">KeyBoard</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                          <input (change)="this.Filter('KeyBoard',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.KeyBoards">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+
+                        <br>
+
+                        <li>
+
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Mouse</mat-label>
+
+                          <mat-form-field style="margin-left: 10px;">
+                          <input (change)="this.Filter('Mouse',this.SearchText);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" [ngModelOptions]="{standalone:true}">
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option"></mat-select>
+
+                            <mat-option *ngFor="let Product of this.Mouses">
+                              {{Product.NAME}}
+                            </mat-option>
+
+
+                          </mat-form-field>
+
+                        </li>
+
+
+                        <br>
+                      </ul>
+
+
+                    </div>
+                    <div class="col-md-9" >
+
+                    <section style="text-align: center;margin-left: 100px;" class="SummarySection">
+                      <div class="row">
+                        <div class="col-md-3" style="text-align: center;">
+                          <h1 style="font-weight: bolder;">Category</h1>
+                          <h3 style="font-weight: bolder;" *ngFor="let Comp of this.MainComponents"> {{Comp}} </h3>
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                          <h1 style="font-weight: bolder;">Product name</h1>
+
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                          <h1 style="font-weight: bolder;">Price</h1>
+
+                        </div>
+                      </div>
+                    </section>
+
+                    </div>
+                  </div>
+                  <div class="pt-5">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+
+
+          <div [hidden]="submitted">
+            <h1>build your pc</h1>
+            <form>
+
+                <div class="form-group">
+                  <label for="processor">processor</label>
+                  <mat-select class="form-control">
+                    <mat-option *ngFor="let pro of processors" [value]="pro.processorname">
+                      <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
+                      {{pro.processorname}}
+                    </mat-option>
+
+                  </mat-select>
+                </div>
+
+              <div class="form-group">
+                <label for="ram">ram</label>
+                <mat-select class="form-control" id="ram">
+                  <mat-option *ngFor="let rm of rams" [value]="rm.ramname">
+                    <img style="width: 40px;height: 40px;" src="assets/img/ram.jpg">
+                  {{rm.ramname}}
+                  </mat-option>
+                </mat-select>
+              </div>
+
+              <div class="form-group">
+                <label for="hard">hard</label>
+                <mat-select class="form-control" id="hard">
+                  <mat-option *ngFor="let hrd of hards" [value]="hrd.hardname">
+                    <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
+
+                    {{hrd.hardname}}</mat-option>
+                </mat-select>
+
+              </div>
+
+              <div class="form-group">
+                <mat-label for="gpu">GPU</mat-label>
+                <mat-select class="form-control">
+                  <mat-option *ngFor="let gp of gpus" [value]="gp.gpuname">
+                    <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
+                    {{gp.gpuname}}</mat-option>
+                </mat-select>
+
+              </div>
+
+              <div class="form-group">
+                <mat-label for="power">Power supply</mat-label>
+                <mat-select class="form-control">
+                  <mat-option *ngFor="let pow of powersupplys" [value]="pow.powername">
+                    <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
+
+                    {{pow.powername}}</mat-option>
+
+                </mat-select>
+
+              </div>
+
+              <button style="margin-top: 10px;" class="btn btn-primary" >Submit</button>
+
+
+            </form>
+          </div>
+
+        </div>
+        <div class="col-md-8">
+          <!--
+                      <div [hidden]="!submitted">
+            <h2>You submitted the following:</h2>
+            <div class="row">
+              <div class="col-xs-3">Processor</div>
+              <div class="col-xs-9">{{ model.processor.processorname }}</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">RAM</div>
+              <div class="col-xs-9">{{model.ram.ramname }}</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Hard</div>
+              <div class="col-xs-9">{{ model.hard.hardname }}</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Gpu</div>
+              <div class="col-xs-9">{{ model.gpu.gpuname }}</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">PowerSupply</div>
+              <div class="col-xs-9">{{ model.powersupply.powername }}</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">Total price</div>
+              <div class="col-xs-9">{{total + model.powersupply.price + model.gpu.price + model.hard.price + model.processor.price + model.ram.price   }} egp</div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
+          </div>
+
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<style>
+  .no-style .ng-valid {
+  border-left: 1px  solid #CCC
+}
+
+  .no-style .ng-invalid {
+  border-left: 1px  solid #CCC
+}
+</style>
