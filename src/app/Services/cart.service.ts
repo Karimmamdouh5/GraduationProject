@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from '../Classes/product';
+import { CartSnackBarComponent } from '../Pages/Shop/Components/cart-snack-bar/cart-snack-bar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,30 +10,15 @@ import { Product } from '../Classes/product';
 export class CartService {
 
 
-  /*
+  constructor( public _snackBar: MatSnackBar)
+  {
 
-    {
-      Image: "core i5.jpg",
-      NAME:"core i5",
-      Price:"6400"
-      }
-      ,
-      {
-        Image: "ram1.png",
-        NAME:"AORUS RGB Memory DDR4 16GB (2x8GB) ",
-        Price:"3000"
-      }
-      ,
-      {
-        Image: "gpu1.jpg",
-        NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-        Price:"57000"
-      }
-
-  */
+  }
 
 CartItems:Product[]=[];
 TotalPrice=0;
+durationInSeconds = 1;
+
 
 addToCart(Prod:Product,Qty:number)
 {
@@ -77,5 +64,11 @@ clearCart() {
   return this.CartItems;
 }
 
+openSnackBar()
+{
+  this._snackBar.openFromComponent(CartSnackBarComponent, {
+    duration: this.durationInSeconds * 1000,
+  });
+}
 }
 

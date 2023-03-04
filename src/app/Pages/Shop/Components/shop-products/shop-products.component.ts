@@ -10,8 +10,6 @@ import {MatSnackBar} from '@angular/material/snack-bar'
 })
 export class ShopProductsComponent {
 
-  durationInSeconds = 1;
-
   products=
   [
     {
@@ -37,14 +35,9 @@ export class ShopProductsComponent {
 
       }
    ];
-  constructor(public CartSrv:CartService,private _snackBar: MatSnackBar)
+  constructor(public CartSrv:CartService,public _snackBar: MatSnackBar)
   {
 
   }
 
-  openSnackBar() {
-    this._snackBar.openFromComponent(CartSnackBarComponent, {
-      duration: this.durationInSeconds * 1000,
-    });
-}
 }

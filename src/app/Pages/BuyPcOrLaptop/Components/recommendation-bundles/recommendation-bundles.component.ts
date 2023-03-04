@@ -1,3 +1,6 @@
+import { RecommendationBundles } from './../../../../Classes/recommendation-bundles';
+import { Product } from './../../../../Classes/product';
+import { CartService } from 'src/app/Services/cart.service';
 import { BundelsRecommendationService } from './../../../../Services/bundels-recommendation.service';
 import { Component } from '@angular/core';
 
@@ -8,16 +11,21 @@ import { Component } from '@angular/core';
 })
 export class RecommendationBundlesComponent
 {
-  constructor(public RecombundelsSrv:BundelsRecommendationService)
+  constructor(public RecombundelsSrv:BundelsRecommendationService,public CartSrv:CartService)
   {}
-purpose='';
-Purposes=
-[
-  'Low end gaming','Mid end gaming','High end gaming','Education','Content creator'
-];
-Recommend(Purpose:string)
+Product:Product= new Product();
+
+Recommend(Purpose:string,DeviceType:string)
 {
-this.purpose=Purpose;
-this.RecombundelsSrv.Recommend(this.purpose);
+this.RecombundelsSrv.purpose=Purpose;
+this.RecombundelsSrv.DeviceType=DeviceType;
+this.RecombundelsSrv.Recommend(this.RecombundelsSrv.purpose,this.RecombundelsSrv.DeviceType);
+}
+AddToCart(item:RecommendationBundles)
+{
+  this.Product.NAME=item.Name;
+  this.Product.Price=item.Price;
+  this.Product.Image=item.Image;
+  this.CartSrv.addToCart(this.Product,1);
 }
 }
