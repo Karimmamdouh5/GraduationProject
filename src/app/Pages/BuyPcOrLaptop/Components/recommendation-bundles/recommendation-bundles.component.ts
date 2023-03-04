@@ -27,5 +27,6 @@ AddToCart(item:RecommendationBundles)
   this.Product.Price=item.Price;
   this.Product.Image=item.Image;
   this.CartSrv.addToCart(this.Product,1);
+  this.Product=new Product();
 }
 }
