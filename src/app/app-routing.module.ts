@@ -9,7 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
 import { RecommendationBundles } from './Classes/recommendation-bundles';
 import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component';
-
 const routes: Routes =
 [
   {path:'',component:MainLayoutComponent,children:
