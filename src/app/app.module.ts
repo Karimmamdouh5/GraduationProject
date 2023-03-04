@@ -34,7 +34,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { BuildYourPcComponent } from './Pages/BuildYourPc/Components/build-your-pc/build-your-pc.component';
+import {MatInputModule} from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +65,7 @@ import {FormsModule} from '@angular/forms'
     CartModelComponent,
     CartSnackBarComponent,
     RecommendationBundlesComponent,
+    BuildYourPcComponent,
 
 
 
@@ -77,7 +81,8 @@ import {FormsModule} from '@angular/forms'
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
 
   ],
   providers: [],

@@ -4,4 +4,5 @@ export class Product
     NAME="";
     Price=0;
     Quantity=0;
+    Category='';
 }

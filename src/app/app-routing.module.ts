@@ -1,3 +1,4 @@
+import { BuildYourPcComponent } from './Pages/BuildYourPc/Components/build-your-pc/build-your-pc.component';
 import { ShopSinglePageComponent } from './Pages/ShopSingle/shop-single-page/shop-single-page.component';
 import { ContactPageComponent } from './Pages/Contact/Components/contact-page/contact-page.component';
 import { ShopPageComponent } from './Pages/Shop/Components/shop-page/shop-page.component';
@@ -20,7 +21,8 @@ const routes: Routes =
     {path:'Contact',component:ContactPageComponent},
     {path:'ShopSingle',component:ShopSinglePageComponent},
     {path:'Cart',component:CartModelComponent},
-    {path:'BuyPcOrLaptop',component:RecommendationBundlesComponent}
+    {path:'BuyPcOrLaptop',component:RecommendationBundlesComponent},
+    {path:'BuildYourPc',component:BuildYourPcComponent}
 
   ]}
 ];
