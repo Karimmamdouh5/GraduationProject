@@ -9,11 +9,8 @@ import { ServicesTrialService } from 'src/app/Services/services-trial.service';
 export class ShopPageComponent
 {
 
-  constructor(public TrialSrv:ServicesTrialService)
+  constructor()
   {
-console.log(this.TrialSrv.HelloText);
-console.log(this.TrialSrv.Prop2);
-
   }
 
 }

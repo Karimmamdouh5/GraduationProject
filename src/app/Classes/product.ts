@@ -1,8 +1,12 @@
+import { Category } from './category';
 export class Product
 {
-    Image= "";
-    NAME="";
-    Price=0;
-    Quantity=0;
-    Category='';
+    image= "";
+    name="";
+    price=0;
+    description=``;
+    quantity=0;
+    category:Category=new Category();
+
+
 }

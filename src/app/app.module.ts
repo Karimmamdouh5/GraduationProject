@@ -28,7 +28,7 @@ import { PicturesSectionComponent } from './Pages/ShopSingle/pictures-section/pi
 import { DescriptionSectionComponent } from './Pages/ShopSingle/description-section/description-section.component'
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component'
@@ -37,6 +37,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
 import { BuildYourPcComponent } from './Pages/BuildYourPc/Components/build-your-pc/build-your-pc.component';
 import {MatInputModule} from '@angular/material/input';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+import {PaginatorModule} from 'primeng/paginator';
+import {AccordionModule} from 'primeng/accordion';
+import {MatPaginatorModule ,PageEvent} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +74,7 @@ import {MatInputModule} from '@angular/material/input';
 
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -82,10 +88,15 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    PaginatorModule,
+    AccordionModule,
+    MatPaginatorModule
+
 
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,17 +23,17 @@ durationInSeconds = 1;
 addToCart(Prod:Product,Qty:number)
 {
   var items=this.CartItems;
-  items=items.filter((x)=>{return x.NAME===Prod.NAME})
+  items=items.filter((x)=>{return x.name===Prod.name})
   if(items.length==0)
   {
-    Prod.Quantity=Qty
+    Prod.quantity=Qty
     this.CartItems.push(Prod);
-    this.TotalPrice=this.TotalPrice+Prod.Price
+    this.TotalPrice=this.TotalPrice+Prod.price
   }
   else
   {
-    this.CartItems[this.CartItems.indexOf(Prod)].Quantity=this.CartItems[this.CartItems.indexOf(Prod)].Quantity+Qty;
-    this.TotalPrice=this.TotalPrice+Prod.Price
+    this.CartItems[this.CartItems.indexOf(Prod)].quantity=this.CartItems[this.CartItems.indexOf(Prod)].quantity+Qty;
+    this.TotalPrice=this.TotalPrice+Prod.price
   }
 }
 
@@ -43,20 +43,20 @@ getItems():Product[] {
 
 DeleteItem(Prod:Product)
 {
-this.CartItems=this.CartItems.filter((x)=>{return x.NAME!=Prod.NAME});
-this.TotalPrice=this.TotalPrice-(Prod.Quantity*Prod.Price);
+this.CartItems=this.CartItems.filter((x)=>{return x.name!=Prod.name});
+this.TotalPrice=this.TotalPrice-(Prod.quantity*Prod.price);
 }
 
 IncreaseItemQuantity(Prod:Product)
 {
-  this.CartItems[this.CartItems.indexOf(Prod)].Quantity=this.CartItems[this.CartItems.indexOf(Prod)].Quantity+1;
-  this.TotalPrice=this.TotalPrice+Prod.Price;
+  this.CartItems[this.CartItems.indexOf(Prod)].quantity=this.CartItems[this.CartItems.indexOf(Prod)].quantity+1;
+  this.TotalPrice=this.TotalPrice+Prod.price;
 }
 
 DecreaseItemQuantity(Prod:Product)
 {
-  this.CartItems[this.CartItems.indexOf(Prod)].Quantity=this.CartItems[this.CartItems.indexOf(Prod)].Quantity-1;
-  this.TotalPrice=this.TotalPrice-Prod.Price;
+  this.CartItems[this.CartItems.indexOf(Prod)].quantity=this.CartItems[this.CartItems.indexOf(Prod)].quantity-1;
+  this.TotalPrice=this.TotalPrice-Prod.price;
 }
 
 clearCart() {

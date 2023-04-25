@@ -23,9 +23,9 @@ this.RecombundelsSrv.Recommend(this.RecombundelsSrv.purpose,this.RecombundelsSrv
 }
 AddToCart(item:RecommendationBundles)
 {
-  this.Product.NAME=item.Name;
-  this.Product.Price=item.Price;
-  this.Product.Image=item.Image;
+  this.Product.name=item.Name;
+  this.Product.price=item.Price;
+  this.Product.image=item.Image;
   this.CartSrv.addToCart(this.Product,1);
   this.Product=new Product();
 }

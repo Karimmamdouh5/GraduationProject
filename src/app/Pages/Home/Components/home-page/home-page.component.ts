@@ -9,11 +9,8 @@ import { ServicesTrialService } from 'src/app/Services/services-trial.service';
 })
 export class HomePageComponent
 {
-  constructor(public TrailSrv:ServicesTrialService , public router:Router)
+  constructor()
   {
-    console.log(TrailSrv.HelloText);
-    this.TrailSrv.Prop2='Hello 2';
-    console.log(this.TrailSrv.Prop2);
   }
 
 

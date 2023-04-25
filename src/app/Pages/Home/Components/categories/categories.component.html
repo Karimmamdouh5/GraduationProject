@@ -1,47 +1,57 @@
-<!--
-
-
-<section class="container py-5">
-  <div class="row text-center pt-3">
-      <div class="col-lg-6 m-auto">
-          <h1 class="h1">Categories of The Month</h1>
-
-      </div>
-  </div>
-  <div class="row">
-      <div *ngFor="let Category of Categories" class="col-12 col-md-4 p-5 mt-3">
-          <a href="#"><img src="./assets/img/{{Category.Image}}" class="rounded-circle img-fluid border"></a>
-          <h5 class="text-center mt-3 mb-3">{{Category.CategoryName}}</h5>
-          <p class="text-center"><a class="btn btn-primary">Go Shop</a></p>
-      </div>
-  </div>
-</section>
-
-
--->
-<div class="row text-center pt-3">
-  <div class="col-lg-6 m-auto">
-      <h1 class="h1">Categories of The Month</h1>
-
-  </div>
+<div class="row text-center pt-3" style="background-color: #e9eef5 !important;">
+  <div class="row text-center py-3">
+    <div class="col-lg-6 m-auto">
+        <h1 style="font-size:xx-large;" class="h1">Categories of the month</h1>
+                </div>
 </div>
+</div>
+<ngb-carousel style="background-color: #e9eef5 !important;">
+	<ng-template style="text-align: center;" *ngFor="let Slide of Slides" ngbSlide>
 
-<ngb-carousel>
-	<ng-template *ngFor="let Slide of Slides" ngbSlide>
-    <div class="col-md-12">
-
-      <div class="row">
-
-        <div *ngFor="let prod of Slide.Items" class="col-md-4">
-          <a href="#"><img src="./assets/img/{{prod.Image}}" class="rounded-circle img-fluid border"></a>
-          <h5 class="text-center mt-3 mb-3">{{prod.CategoryName}}</h5>
-          <p class="text-center"><a class="btn btn-primary" (click)="this.route('Shop')">Go Shop</a></p>
-      </div>
-
-      </div>
-
-    </div>
+<div class="row">
+  <div class="col-md-1" style="margin-left: 60px;"></div>
+  <div *ngFor="let prod of Slide.Items" class="col-md-3">
+    <a href="#" ><img style="background-color: transparent;margin-top: 50px;" src="./assets/img/{{prod.Image}}" class="rounded-circle img-fluid border"></a>
+    <h2 class="text-center mt-3 mb-3">{{prod.CategoryName}}</h2>
+    <p style="padding: 50px;" class="text-center"><a class="btn btn-primary" (click)="this.RouteToShop()">Go Shop</a></p>
+</div>
+</div>
 
 	</ng-template>
 </ngb-carousel>
 
+<!--
+
+<div class="carousel">
+  <div class="carousel-inner">
+    <ng-content></ng-content>
+  </div>
+
+  <a class="carousel-control-next" href="#" role="button" >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+  <div class="row">
+  <div class="col-md-9" *ngFor="let Slide of this.Slides">
+    <div class="row">
+      <div class="col-md-3"></div>
+    <div class="col-md-3" *ngFor="let Prod of Slide.Items">
+      <a href="#" ><img style="background-color: transparent;margin-top: 50px;" src="./assets/img/{{Prod.Image}}" class="rounded-circle img-fluid border"></a>
+      <h5 class="text-center mt-3 mb-3">{{Prod.CategoryName}}</h5>
+      <p style="padding: 50px;" class="text-center"><a class="btn btn-primary" (click)="this.route('Shop')">Go Shop</a></p>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+
+  <a class="carousel-control-prev" href="#" role="button">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+
+</div>
+-->

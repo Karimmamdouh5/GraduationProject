@@ -1,3 +1,4 @@
+import { ShopService } from 'src/app/Services/shop.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ServicesTrialService } from 'src/app/Services/services-trial.service';
@@ -9,7 +10,7 @@ import { ServicesTrialService } from 'src/app/Services/services-trial.service';
 })
 export class CategoriesComponent
 {
-  constructor(public TrialSrv:ServicesTrialService,public router:Router)
+  constructor(public router:Router,public ShopSrv:ShopService)
   {
 
   }
@@ -17,31 +18,31 @@ export class CategoriesComponent
 Categories=
 [
   {
-    CategoryName:'CPUs',
+    CategoryName:'Processor',
     Image:'core i5.jpg'
   },
   {
-    CategoryName:'GPUs',
+    CategoryName:'GPU',
     Image:'GPU.jpg'
   },
   {
-    CategoryName:'RAMs',
+    CategoryName:'Ram',
     Image:'ram.jpg'
   },
   {
-    CategoryName:'Motherboards',
+    CategoryName:'Motherboard',
     Image:'motherboard.png'
   },
   {
-    CategoryName:'Coolers',
+    CategoryName:'Cooler',
     Image:'coolers.png'
   },
   {
-    CategoryName:'Cases',
+    CategoryName:'Case',
     Image:'cases.jpg'
   },
   {
-    CategoryName:'Monitors',
+    CategoryName:'Monitor',
     Image:'monitors.jpg'
   },
   {
@@ -62,9 +63,10 @@ Slides=
     Items:[this.Categories[6],this.Categories[7]]
   },
 ];
-route(route:string)
+RouteToShop(Category:string)
 {
-  this.router.navigate([route]);
+  this.router.navigate(['/Shop']);
+  this.ShopSrv.ShopProductsFilter(Category);
 }
 
 }
