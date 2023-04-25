@@ -19,7 +19,7 @@
 
         <div class=" col-md-3" *ngFor="let item of ViewProducts">
               <div class="card h-100">
-                  <a href="shop-single.html">
+                  <a (click)="this.NavigateToShopSingle(item)">
                       <img src="./assets/img/{{item.image}}" class="card-img-top" alt="...">
                   </a>
                   <div class="card-body">
@@ -27,7 +27,7 @@
 
                           <li class="text-muted text-right">{{item.price}} EGP</li>
                       </ul>
-                      <a href="shop-single.html" class="h2 text-decoration-none text-dark">{{item.name}}</a>
+                      <a (click)="this.NavigateToShopSingle(item)" ><h2 id="ProductName">{{item.name}}</h2></a>
 
                   </div>
               </div>

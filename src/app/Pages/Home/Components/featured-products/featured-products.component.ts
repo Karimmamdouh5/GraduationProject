@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/Classes/category';
 import { Product } from 'src/app/Classes/product';
+import { ShopSingleService } from 'src/app/Services/shop-single.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-featured-products',
@@ -110,7 +113,7 @@ forwardDisable=false;
 BackwardDisable=false;
 ViewProducts:Product[]=[]
 
-constructor()
+constructor(public ShopSingleSrv:ShopSingleService,public router:Router)
 {
   this.ViewProducts=this.products.slice(0,3);
   this.BackwardDisable=true;
@@ -134,5 +137,11 @@ PaginateBackward()
   {
     this.BackwardDisable=true;
   }
+}
+
+NavigateToShopSingle(product:Product)
+{
+    this.ShopSingleSrv.product=product;
+    this.router.navigate(['/ShopSingle']);
 }
 }
