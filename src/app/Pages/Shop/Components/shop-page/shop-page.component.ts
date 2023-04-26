@@ -1,4 +1,6 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
+import { LoaderService } from 'src/app/Services/loader.service';
 import { ServicesTrialService } from 'src/app/Services/services-trial.service';
 
 @Component({
@@ -9,7 +11,8 @@ import { ServicesTrialService } from 'src/app/Services/services-trial.service';
 export class ShopPageComponent
 {
 
-  constructor()
+  constructor(public breakPointObserver:BreakpointObserver,
+    public LoaderSrv:LoaderService)
   {
   }
 

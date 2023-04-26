@@ -37,10 +37,13 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
 import { BuildYourPcComponent } from './Pages/BuildYourPc/Components/build-your-pc/build-your-pc.component';
 import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {PaginatorModule} from 'primeng/paginator';
 import {AccordionModule} from 'primeng/accordion';
 import {MatPaginatorModule ,PageEvent} from '@angular/material/paginator';
+import { MatSpinnerComponent } from './Shared/mat-spinner/mat-spinner.component';
+import {MatProgressSpinnerModule, MatSpinner}from '@angular/material/progress-spinner'
+import { InterceptorService } from './Services/interceptor.service';
 
 
 @NgModule({
@@ -71,10 +74,7 @@ import {MatPaginatorModule ,PageEvent} from '@angular/material/paginator';
     CartSnackBarComponent,
     RecommendationBundlesComponent,
     BuildYourPcComponent,
-
-
-
-
+    MatSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -92,11 +92,13 @@ import {MatPaginatorModule ,PageEvent} from '@angular/material/paginator';
     HttpClientModule,
     PaginatorModule,
     AccordionModule,
-    MatPaginatorModule
-
+    MatPaginatorModule,
+    MatProgressSpinnerModule
 
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule,
+    MatSpinner,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,7 +13,8 @@ Purposes=
 [
   'Low end gaming','Mid Range gaming','High end gaming','Education','Content creator'
 ];
-ComputerTypes=['Pc','Laptop'];
+
+  ComputerTypes=['Pc','Laptop'];
   constructor() { }
 
   Bundels : RecommendationBundles[]=

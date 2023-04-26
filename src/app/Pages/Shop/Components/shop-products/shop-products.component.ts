@@ -7,6 +7,8 @@ import { CartService } from 'src/app/Services/cart.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar'
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { LoaderService } from 'src/app/Services/loader.service';
 @Component({
   selector: 'app-shop-products',
   templateUrl: './shop-products.component.html',
@@ -19,7 +21,8 @@ export class ShopProductsComponent implements OnInit {
   listOfProducts:Product[] =[];
   totalProducts: number = this.ShopSrv.products.length;
 //page : number=1
-  constructor(public CartSrv:CartService,public _snackBar: MatSnackBar,public ShopSrv:ShopService , public router:Router,public ShopSingleSrv:ShopSingleService)
+  constructor(public CartSrv:CartService,public _snackBar: MatSnackBar,public ShopSrv:ShopService , public router:Router,public ShopSingleSrv:ShopSingleService,public breakPointObserver:BreakpointObserver,
+    public LoaderSrv:LoaderService)
   {
 
   }

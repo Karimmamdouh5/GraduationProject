@@ -19,11 +19,11 @@ Categories=
 [
   {
     CategoryName:'Processor',
-    Image:'core i5.jpg'
+    Image:'core i5.png'
   },
   {
     CategoryName:'GPU',
-    Image:'GPU.jpg'
+    Image:'GPU.png'
   },
   {
     CategoryName:'Ram',

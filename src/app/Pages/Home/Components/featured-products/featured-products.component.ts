@@ -17,7 +17,7 @@ export class FeaturedProductsComponent {
     /*Image: "core i5.jpg",
     NAME:"core i5",
     Price:"6400"*/
-    image: "core i5.jpg",
+    image: "core i5.png",
     name:"core i5",
     price:6400,
     description:``,
