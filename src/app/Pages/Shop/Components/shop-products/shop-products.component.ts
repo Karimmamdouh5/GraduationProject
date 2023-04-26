@@ -20,7 +20,6 @@ export class ShopProductsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })paginator!: MatPaginator;
   listOfProducts:Product[] =[];
   totalProducts: number = this.ShopSrv.products.length;
-//page : number=1
   constructor(public CartSrv:CartService,public _snackBar: MatSnackBar,public ShopSrv:ShopService , public router:Router,public ShopSingleSrv:ShopSingleService,public breakPointObserver:BreakpointObserver,
     public LoaderSrv:LoaderService)
   {

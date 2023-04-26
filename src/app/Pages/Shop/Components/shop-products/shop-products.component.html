@@ -2,13 +2,13 @@
       <div class="col-md-6">
       </div>
       <div class="col-md-6 pb-4">
-          <div class="d-flex">
-              <select class="form-control">
-                  <option>Featured</option>
-                  <option>A to Z</option>
-                  <option>Item</option>
-              </select>
-          </div>
+        <div class="input-icons">
+          <i class="fa fa-search icon">
+        </i>
+          <input (input)="this.ShopSrv.ShopProductsFilter(this.ShopSrv.Category,this.ShopSrv.SearchText)"[(ngModel)]="this.ShopSrv.SearchText" [ngModelOptions]="{standalone:true}" class="input-field"
+                 type="text"
+                 placeholder="Search...">
+      </div>
       </div>
   </div>
 
