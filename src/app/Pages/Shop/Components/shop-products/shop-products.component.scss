@@ -203,6 +203,11 @@ body, ul, li, p, a, label, input, div {
   padding: 10px;
   min-width: 50px;
 }
+.icon:hover
+{
+  color:cornflowerblue;
+  cursor: pointer;
+}
 
 .input-field {
   width: 100%;

@@ -46,18 +46,17 @@ export class ShopService
       this.filteredProducts=this.filteredProducts.filter((x)=>{return x.name.includes(SearchText)&&x.category.name==this.Category});
       this.paginator.length=this.filteredProducts.length;
     }
+    if(Category==''&&SearchText!=null)
+
+    {
+    this.filteredProducts= this.filteredProducts.filter((x)=>{return x.name.includes(SearchText)});
+    this.paginator.length=this.filteredProducts.length;
+    }
     else
     {
-    this.filteredProducts= this.filteredProducts.filter((x)=>{return x.category.name===Category});
-    this.paginator.length=this.filteredProducts.length;
+      this.filteredProducts= this.filteredProducts.filter((x)=>{return x.category.name===Category});
+      this.paginator.length=this.filteredProducts.length;
     }
   }
 
-  Search(SearchText:string)
-  {
-    console.log(SearchText);
-
-    this.filteredProducts=this.filteredProducts.filter((x)=>{return x.name.includes(SearchText)});
-    this.paginator.length=this.filteredProducts.length;
-  }
 }
