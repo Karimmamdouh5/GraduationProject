@@ -1,4 +1,4 @@
-<section style="background-color:#e9eef5;">
+<section  style="background-color:#e9eef5;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
@@ -10,7 +10,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-5">
 
                   </div>
-                  <div class="row">
+                  <div class="row" >
 
                     <div class="col-md-3 ">
 
@@ -21,7 +21,7 @@
                         <mat-form-field style="margin-left: 10px;">
                           <mat-select (click)="this.Filter('Motherboards','');" placeholder="select an option">
                             <input (input)="this.Filter('Motherboards',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                            <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                            <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                               <img style="width: 40px;height: 25px;" src="{{item.image}}">
                               {{item.name}}
                             </mat-option>
@@ -37,7 +37,7 @@
                         <mat-select (click)="this.Filter('Processors','');" placeholder="select an option">
 
                           <input (input)="this.Filter('Processors',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -53,7 +53,7 @@
                       <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Ram','');"  placeholder="select an option" >
                           <input (input)="this.Filter('Ram',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -71,7 +71,7 @@
                         <mat-select (click)="this.Filter('Storage','');" placeholder="select an option">
 
                           <input (input)="this.Filter('Storage',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -90,7 +90,7 @@
                         <mat-select (click)="this.Filter('Case','');"  placeholder="select an option">
 
                           <input (input)="this.Filter('Case',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -108,7 +108,7 @@
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Monitor','');"  placeholder="select an option">
                           <input (input)="this.Filter('Monitor',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -123,7 +123,7 @@
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Power supply','');" placeholder="select an option">
                           <input (input)="this.Filter('Power supply',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -137,7 +137,7 @@
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Cooler','');" placeholder="select an option">
                           <input (input)="this.Filter('Cooler',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option *ngFor="let item of this.Products" [value]="item.name">
+                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
@@ -149,21 +149,27 @@
                       </ul>
 
                     </div>
-                    <div class="col-md-9" >
+                    <div class="col-md-9" *ngIf="this.maintrial.length!=0" >
 
                     <section style="text-align: center;margin-left: 100px;" class="SummarySection">
                       <div class="row">
                         <div class="col-md-3" style="text-align: center;">
                           <h1 style="font-weight: bolder;">Category</h1>
-                          <h3 style="font-weight: bolder;" *ngFor="let Comp of this.MainComponents"> {{Comp}} </h3>
+                         <!--
+                         <h3 style="font-weight: bolder;" *ngFor="let Comp of this.MainComponents"> {{Comp}} </h3>
+                         --> 
+
+                         <h3 style="font-weight: bolder;" *ngFor="let Comp of this.maintrial"> {{Comp.name}} </h3>
+
                         </div>
-                        <div class="col-md-3" style="text-align: center;">
+                        <div class="col-md-3"  style="text-align: center;">
                           <h1 style="font-weight: bolder;">Product name</h1>
 
+                          <h3 *ngFor="let Comp of this.maintrial">{{Comp.itemname}}</h3>
                         </div>
                         <div class="col-md-3" style="text-align: center;">
                           <h1 style="font-weight: bolder;">Price</h1>
-
+                          <h3 *ngFor="let Comp of this.maintrial">{{Comp.itemprice}}</h3>
                         </div>
                       </div>
                     </section>

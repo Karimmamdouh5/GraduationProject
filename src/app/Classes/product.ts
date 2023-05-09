@@ -8,5 +8,5 @@ export class Product
     quantity=0;
     category:Category=new Category();
 
-
+    
 }

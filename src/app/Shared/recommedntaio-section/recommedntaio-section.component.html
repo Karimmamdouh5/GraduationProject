@@ -1,0 +1,68 @@
+<!--
+<div class="row">
+<div class="col-md-12">
+  <div class="row">
+    <h1> Buy it with</h1>
+    <div class="col-md-10">
+        <div class=" col-md-2" *ngFor="let item of ViewProducts">
+          <div class="card h-100">
+              <a (click)="this.NavigateToShopSingle(item)">
+                  <img src="./assets/img/{{item.image}}" class="card-img-top" alt="...">
+              </a>
+              <div class="card-body">
+                  <ul class="list-unstyled d-flex justify-content-between">
+
+                      <li class="text-muted text-right">{{item.price}} EGP</li>
+                  </ul>
+                  <a (click)="this.NavigateToShopSingle(item)" ><h2 id="ProductName">{{item.name}}</h2></a>
+
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<div class="col-md-2">
+
+</div>
+
+</div>
+</div>
+-->
+
+
+<section class="buy-it-with" style="background: white;border:1px solid grey;padding: 20px;margin-top: 20px;">
+  <h1 style="font-weight: bold;">Buy it with</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+
+    <div class="col-md-2" *ngFor="let item of ViewProducts">
+      <div class="card">
+        <mat-checkbox style="float:right"></mat-checkbox>
+
+        <img src="./assets/img/{{item.image}}" class="card-img-top" alt="Related Product 1">
+        <div class="card-body">
+          <p class="card-text">{{item.price}}EGP</p>
+          <h2 class="card-title">{{item.name}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3" style="text-align: center;padding-top: 10%;">
+
+      <h1>Total Price : xxx EGP</h1>
+      <button mat-fab extended color="primary" >
+        <span style="font-size: large;">Add selected items to cart</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+
+      </button>
+
+    </div>
+  </div>
+    </div>
+</div>
+</section>
+
+

@@ -1,5 +1,6 @@
 import { Product } from './../../../../Classes/product';
 import { Component } from '@angular/core';
+import { Builtpc } from 'src/app/Classes/builtpc';
 import { ShopService } from 'src/app/Services/shop.service';
 
 @Component({
@@ -12,10 +13,13 @@ export class BuildYourPcComponent
 
 MainComponents=['Processor','Motherboard','GPU','Power supply','Ram','Storage','Case','Monitor','Cooler'];
 
-
+maintrial:any=[/*{name:'processor',itemname:'xxxx',itemprice:0}*/];
+Pc:Builtpc=new Builtpc();
 
 Products:Product[]=[];
+
 SearchText='';
+
 constructor(public ShopSrv:ShopService)
 {
   this.ShopSrv.GetAllProducts().subscribe(x=>
@@ -37,15 +41,27 @@ constructor(public ShopSrv:ShopService)
 }
 Filter(Category:string,Text:string)
 {
+  console.log(Category);
+  
+  var arr=this.ShopSrv.products;
   if(Text=='')
   {
-    this.Products=this.ShopSrv.products.filter((x)=>{return x.category.name.toUpperCase()==Category.toUpperCase()});
+    this.Products=arr.filter((x)=>{return x.category.name.toUpperCase().trim()==Category.toUpperCase().trim()});
   }
-  if(Text!='')
+  if(Text!=''||Text!=null)
   {
     console.log(this.SearchText);
 
-    this.Products=this.Products.filter((x)=>{return x.category.name.toUpperCase()==Category.toUpperCase() && x.name.toUpperCase().includes(Text.toUpperCase())});
+    this.Products=arr.filter((x)=>{return x.category.name.toUpperCase().trim()==Category.toUpperCase().trim() && x.name.toUpperCase().trim().includes(Text.toUpperCase().trim())});
   }
+ }
+
+ Binding(item:Product)
+ {
+  item.quantity=1;
+  this.Pc.ProductsList.push(item);
+  console.log(this.Pc);
+  var obj = {name:item.category.name,itemname:item.name,itemprice:item.price};
+  this.maintrial.push(obj);
  }
 }
