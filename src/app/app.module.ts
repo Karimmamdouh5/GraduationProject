@@ -44,7 +44,10 @@ import {MatPaginatorModule ,PageEvent} from '@angular/material/paginator';
 import { MatSpinnerComponent } from './Shared/mat-spinner/mat-spinner.component';
 import {MatProgressSpinnerModule, MatSpinner}from '@angular/material/progress-spinner'
 import { InterceptorService } from './Services/interceptor.service';
-
+import { RecommedntaioSectionComponent } from './Shared/recommedntaio-section/recommedntaio-section.component';
+import { RelatedProductsSectionComponent } from './Shared/related-products-section/related-products-section.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,9 @@ import { InterceptorService } from './Services/interceptor.service';
     CartSnackBarComponent,
     RecommendationBundlesComponent,
     BuildYourPcComponent,
-    MatSpinnerComponent
+    MatSpinnerComponent,
+    RecommedntaioSectionComponent,
+    RelatedProductsSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +98,9 @@ import { InterceptorService } from './Services/interceptor.service';
     PaginatorModule,
     AccordionModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatButtonModule
 
   ],
   providers: [HttpClientModule,

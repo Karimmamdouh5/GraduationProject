@@ -8,7 +8,6 @@ import { MainLayoutComponent } from './Shared/MainLayout/main-layout/main-layout
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartModelComponent } from './Pages/Cart/cart-model/cart-model.component';
-import { RecommendationBundles } from './Classes/recommendation-bundles';
 import { RecommendationBundlesComponent } from './Pages/BuyPcOrLaptop/Components/recommendation-bundles/recommendation-bundles.component';
 const routes: Routes =
 [
