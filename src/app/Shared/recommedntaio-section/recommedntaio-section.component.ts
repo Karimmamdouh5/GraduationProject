@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/Classes/category';
 import { Product } from 'src/app/Classes/product';
+import { RecommendedProduct } from 'src/app/Classes/recommended-product';
+import { CartService } from 'src/app/Services/cart.service';
 import { ShopSingleService } from 'src/app/Services/shop-single.service';
+import { ShopService } from 'src/app/Services/shop.service';
 
 @Component({
   selector: 'app-recommedntaio-section',
@@ -11,37 +14,15 @@ import { ShopSingleService } from 'src/app/Services/shop-single.service';
 })
 export class RecommedntaioSectionComponent
 {
-  products:Product[]=[
-    {
-    /*Image: "core i5.jpg",
-    NAME:"core i5",
-    Price:"6400"*/
-    image: "core i5.png",
-    name:"core i5",
-    price:6400,
-    description:``,
-    quantity:0,
-    category:new Category()
-    }
-    ,
-    {
-      /*Image: "ram1.png",
-      NAME:"AORUS RGB Memory DDR4 16GB (2x8GB) ",
-      Price:"3000"*/
-      image: "ram1.png",
-      name:"AORUS RGB Memory DDR4 16GB (2x8GB)",
-      price:3000,
-      description:``,
-      quantity:0,
-      category:new Category()
-    }
-];
-
+products:Product[]=[];
+Total=0;
 forwardDisable=false;
 BackwardDisable=false;
-ViewProducts:Product[]=[]
+ViewProducts:Product[]=[];
 
-constructor(public ShopSingleSrv:ShopSingleService,public router:Router)
+RecommendedProductsCartList:Product[]=[];
+
+constructor(public ShopSingleSrv:ShopSingleService,public CartSrv:CartService,public ShopSrv:ShopService,public router:Router)
 {
   this.ViewProducts=this.products.slice(0,3);
   this.BackwardDisable=true;
@@ -73,4 +54,39 @@ NavigateToShopSingle(product:Product)
     this.router.navigate(['/ShopSingle']);
 }
 
+SelectProduct(item:RecommendedProduct)
+{
+ if(item.isChecked==true)
+  {
+    this.Total=this.ShopSingleSrv.product.price+this.Total+item.price;
+    var prod:Product=new Product();
+    prod.category=item.category;
+    prod.description=item.description;
+    prod.image=item.image;
+    prod.name=item.name;
+    prod.price=item.price;
+    prod.quantity=item.quantity;
+    this.RecommendedProductsCartList.push(prod);
+    console.log(this.RecommendedProductsCartList);
+  }
+  else
+  {
+    this.Total=this.Total-item.price;
+    this.RecommendedProductsCartList=this.RecommendedProductsCartList.filter((p)=>{return p.name!=item.name});
+    console.log(this.RecommendedProductsCartList);
+    
+    if(this.Total==this.ShopSingleSrv.product.price)
+    {
+      this.Total=0;
+    }
+  }
+}
+
+AddProductsToCart()
+{
+  this.RecommendedProductsCartList.push(this.ShopSingleSrv.product);
+  this.CartSrv.addRangeToCart(this.RecommendedProductsCartList);
+  console.log(this.RecommendedProductsCartList);
+  this.CartSrv.openSnackBar();
+}
 }

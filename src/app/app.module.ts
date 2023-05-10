@@ -48,6 +48,7 @@ import { RecommedntaioSectionComponent } from './Shared/recommedntaio-section/re
 import { RelatedProductsSectionComponent } from './Shared/related-products-section/related-products-section.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+import { RelatedProductsComponent } from './Pages/ShopSingle/related-products/related-products.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {MatButtonModule} from '@angular/material/button';
     BuildYourPcComponent,
     MatSpinnerComponent,
     RecommedntaioSectionComponent,
-    RelatedProductsSectionComponent
+    RelatedProductsSectionComponent,
+    RelatedProductsComponent
   ],
   imports: [
     BrowserModule,

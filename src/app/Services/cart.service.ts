@@ -37,6 +37,13 @@ addToCart(Prod:Product,Qty:number)
   }
 }
 
+addRangeToCart(prods:Product[])
+{
+  prods.forEach(item=>
+    {
+      this.addToCart(item,1);
+    });
+}
 getItems():Product[] {
   return this.CartItems;
 }
