@@ -9,6 +9,9 @@ import {MatSnackBar} from '@angular/material/snack-bar'
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LoaderService } from 'src/app/Services/loader.service';
+
+const { localStorage } = window;
+
 @Component({
   selector: 'app-shop-products',
   templateUrl: './shop-products.component.html',
@@ -29,6 +32,7 @@ export class ShopProductsComponent implements OnInit {
   NavigateToShopSingle(product:Product)
   {
       this.ShopSingleSrv.product=product;
+      localStorage.setItem('product',JSON.stringify(product));
       this.router.navigate(['/ShopSingle']);
   }
 
@@ -56,7 +60,8 @@ export class ShopProductsComponent implements OnInit {
           this.totalProducts = this.listOfProducts.length,
           this.Slicing(),
           this.paginator.length = this.totalProducts,
-          this.ShopSrv.paginator=this.paginator
+          this.ShopSrv.paginator=this.paginator,
+          localStorage.setItem('products',JSON.stringify(this.ShopSrv.products))
           )});
   }
 

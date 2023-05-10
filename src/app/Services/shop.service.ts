@@ -6,6 +6,8 @@ import { Product } from '../Classes/product';
 import { MyResponse } from '../Classes/Myresponse';
 import { MatPaginator } from '@angular/material/paginator';
 
+const { localStorage } = window;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,10 +23,16 @@ export class ShopService
    EndPointProducts:MyResponse<ProductDto>=new MyResponse<ProductDto>();
    ApiUrl='https://localhost:7202/api/';
 
-  constructor(public HTTP:HttpClient,)
+  constructor(public HTTP:HttpClient)
   {
+    if(this.products.length==0)
+    { var productsString=localStorage.getItem('products');
 
-  }
+       if(productsString!=null)
+       {
+      this.products=JSON.parse(productsString);
+       }
+    }  }
 
   GetAllProducts():Observable<MyResponse<ProductDto>>
   {

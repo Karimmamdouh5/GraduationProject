@@ -24,8 +24,7 @@ RecommendedProductsCartList:Product[]=[];
 
 constructor(public ShopSingleSrv:ShopSingleService,public CartSrv:CartService,public ShopSrv:ShopService,public router:Router)
 {
-  this.ViewProducts=this.products.slice(0,3);
-  this.BackwardDisable=true;
+
 }
 
 PaginateForward()

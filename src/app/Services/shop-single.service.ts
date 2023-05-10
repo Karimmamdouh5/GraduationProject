@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { ShopService } from './shop.service';
 import { RecommendedProduct } from '../Classes/recommended-product';
 
+const { localStorage } = window;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,16 @@ export class ShopSingleService {
   RecommendedProducts:RecommendedProduct[]=[];
 
   product:Product=new Product();
-  constructor(public ShopSrv:ShopService) { }
+  constructor(public ShopSrv:ShopService)
+   {
+    const productstring=localStorage.getItem('product');
+    if(productstring!=null)
+    {
+    this.product=JSON.parse(productstring);
+    }
+    this.SelectRelatedProducts(this.product);
+    this.RecommendedProducts=this.RecommendProducts(this.ShopSrv.products)
+   }
 
   SelectRelatedProducts(product:Product)
 {
