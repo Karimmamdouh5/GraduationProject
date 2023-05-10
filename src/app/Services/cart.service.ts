@@ -63,6 +63,10 @@ IncreaseItemQuantity(Prod:Product)
 DecreaseItemQuantity(Prod:Product)
 {
   this.CartItems[this.CartItems.indexOf(Prod)].quantity=this.CartItems[this.CartItems.indexOf(Prod)].quantity-1;
+  if(this.CartItems[this.CartItems.indexOf(Prod)].quantity==0)
+  {
+    this.DeleteItem(Prod);
+  }
   this.TotalPrice=this.TotalPrice-Prod.price;
 }
 
