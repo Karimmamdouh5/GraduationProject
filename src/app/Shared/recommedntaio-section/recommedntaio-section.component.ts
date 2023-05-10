@@ -6,6 +6,7 @@ import { RecommendedProduct } from 'src/app/Classes/recommended-product';
 import { CartService } from 'src/app/Services/cart.service';
 import { ShopSingleService } from 'src/app/Services/shop-single.service';
 import { ShopService } from 'src/app/Services/shop.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recommedntaio-section',
@@ -15,7 +16,6 @@ import { ShopService } from 'src/app/Services/shop.service';
 export class RecommedntaioSectionComponent
 {
 products:Product[]=[];
-Total=0;
 forwardDisable=false;
 BackwardDisable=false;
 ViewProducts:Product[]=[];
@@ -57,7 +57,6 @@ SelectProduct(item:RecommendedProduct)
 {
  if(item.isChecked==true)
   {
-    this.Total=this.ShopSingleSrv.product.price+this.Total+item.price;
     var prod:Product=new Product();
     prod.category=item.category;
     prod.description=item.description;
@@ -70,22 +69,30 @@ SelectProduct(item:RecommendedProduct)
   }
   else
   {
-    this.Total=this.Total-item.price;
     this.RecommendedProductsCartList=this.RecommendedProductsCartList.filter((p)=>{return p.name!=item.name});
     console.log(this.RecommendedProductsCartList);
-    
-    if(this.Total==this.ShopSingleSrv.product.price)
-    {
-      this.Total=0;
-    }
   }
 }
 
 AddProductsToCart()
 {
-  this.RecommendedProductsCartList.push(this.ShopSingleSrv.product);
-  this.CartSrv.addRangeToCart(this.RecommendedProductsCartList);
-  console.log(this.RecommendedProductsCartList);
-  this.CartSrv.openSnackBar();
+
+  if(this.RecommendedProductsCartList.length==0)
+  {
+    Swal.fire({
+      title: 'Message!',
+      text: 'There are no selected products to add to cart',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  }
+  else
+  {
+    this.RecommendedProductsCartList.push(this.ShopSingleSrv.product);
+    this.CartSrv.addRangeToCart(this.RecommendedProductsCartList);
+    console.log(this.RecommendedProductsCartList);
+    this.CartSrv.openSnackBar();
+  }
+
 }
 }
