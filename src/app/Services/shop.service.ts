@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Product } from '../Classes/product';
 import { MyResponse } from '../Classes/Myresponse';
 import { MatPaginator } from '@angular/material/paginator';
+import { LookupDto } from '../Classes/lookup-dto';
+import { Category } from '../Classes/category';
 
 const { localStorage } = window;
 
@@ -18,6 +20,7 @@ export class ShopService
    FirstPage:Product[]=[]
    products:Product[]=[];
    filteredProducts:Product[]=[];
+   ProductsCategories:LookupDto[]=[];
    Category='';
    SearchText='';
    EndPointProducts:MyResponse<ProductDto>=new MyResponse<ProductDto>();
@@ -38,6 +41,12 @@ export class ShopService
   {
     var api = this.ApiUrl+'Products/GetAllProducts';
     return this.HTTP.get<MyResponse<ProductDto>>(api);
+  }
+
+  ListOfCategories():Observable<MyResponse<LookupDto>>
+  {
+    var api = this.ApiUrl+'Products/ListOfCategories';
+    return this.HTTP.get<MyResponse<LookupDto>>(api);
   }
 
   ShopProductsFilter(Category:string,SearchText?:string)

@@ -11,16 +11,19 @@
 
                   </div>
                   <div class="row" >
+                    <span style="color: red;font-size: larger;margin-bottom:20px ;"><span style="color: red;font-size: larger;font-weight: bolder;">NOTE: </span>please note that all fields are required</span>
 
                     <div class="col-md-3 ">
+                      <mat-label style="font-size: large;margin-left: 30px;" class="fw-bold mb-0 text-black">Pc Name<span style="color: red;"> *</span></mat-label>
+                      <mat-form-field style="margin-left: 40px;">
+                        <input matInput placeholder="Enter your pc name" [(ngModel)]="this.Pc.name">
+                      </mat-form-field>
+<!--                      <ul>
 
-                      <ul>
-
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Motherboard</mat-label>
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Motherboard<span style="color: red;"> *</span></mat-label>
                         <mat-form-field style="margin-left: 10px;">
-                          <mat-select (click)="this.Filter('Motherboards','');" placeholder="select an option">
-                            <input (input)="this.Filter('Motherboards',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
+                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option">
+                            <input (input)="this.Filter('Motherboard',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
                             <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                               <img style="width: 40px;height: 25px;" src="{{item.image}}">
                               {{item.name}}
@@ -28,28 +31,18 @@
                           </mat-select>
                           </mat-form-field>
 
-
-
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Processor</mat-label>
-
+                        <mat-label style="font-size: large;" class=" fw-bold mb-0 text-black">Processor<span style="color: red;"> *</span></mat-label>
                         <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Processors','');" placeholder="select an option">
-
-                          <input (input)="this.Filter('Processors',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
+                        <mat-select (click)="this.Filter('Processor','');" placeholder="select an option">
+                          <input (input)="this.Filter('Processor',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
                           <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
                             <img style="width: 40px;height: 25px;" src="{{item.image}}">
                             {{item.name}}
                           </mat-option>
-
                         </mat-select>
-
                       </mat-form-field>
 
-
-
-                      <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">RAM</mat-label>
-
+                      <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">RAM<span style="color: red;"> *</span></mat-label>
                       <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Ram','');"  placeholder="select an option" >
                           <input (input)="this.Filter('Ram',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
@@ -59,14 +52,9 @@
                           </mat-option>
                         </mat-select>
 
-                  </mat-form-field>
+                      </mat-form-field>
 
-
-
-
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Storage</mat-label>
-
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Storage<span style="color: red;"> *</span></mat-label>
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Storage','');" placeholder="select an option">
 
@@ -80,12 +68,7 @@
 
                         </mat-form-field>
 
-
-
-
-
-                      <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Case</mat-label>
-
+                      <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Case<span style="color: red;"> *</span></mat-label>
                       <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Case','');"  placeholder="select an option">
 
@@ -99,12 +82,7 @@
 
                       </mat-form-field>
 
-
-
-
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Monitor</mat-label>
-
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Monitor<span style="color: red;"> *</span></mat-label>
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Monitor','');"  placeholder="select an option">
                           <input (input)="this.Filter('Monitor',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" >
@@ -116,10 +94,7 @@
 
                         </mat-form-field>
 
-
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Power supply</mat-label>
-
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Power supply<span style="color: red;"> *</span></mat-label>
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Power supply','');" placeholder="select an option">
                           <input (input)="this.Filter('Power supply',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
@@ -131,9 +106,8 @@
 
                         </mat-form-field>
 
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Cooler</mat-label>
-
+                        
+                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Cooler<span style="color: red;"> *</span></mat-label>
                         <mat-form-field style="margin-left: 10px;">
                         <mat-select (click)="this.Filter('Cooler','');" placeholder="select an option">
                           <input (input)="this.Filter('Cooler',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
@@ -145,7 +119,23 @@
 
                         </mat-form-field>
 
-
+                      </ul>
+                    
+-->
+ 
+                      <ul>
+                        <div *ngFor="let category of this.ShopSrv.ProductsCategories;let i = index">
+                          <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">{{category.name}}<span style="color: red;"> *</span></mat-label>
+                          <mat-form-field style="margin-left: 10px;">
+                            <mat-select (click)="this.Filter()" (selectionChange)="this.ShopSrv.ProductsCategories[i].selectedvalue = $event.value" placeholder="select an option" [(ngModel)]="this.ShopSrv.ProductsCategories[i].selectedvalue">
+                              <input class="mat-elevation-z8" (input)="this.FilterByText(category,this.SearchText)" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" >
+                              <mat-option (click)="this.Binding(item)" *ngFor="let item of this.category.products; let index = index" [value]="item.name">
+                                <img style="width: 40px;height: 25px;" [src]="item.image">
+                                {{item.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
                       </ul>
 
                     </div>
@@ -167,11 +157,20 @@
 
                           <h3 *ngFor="let Comp of this.maintrial">{{Comp.itemname}}</h3>
                         </div>
+                  
                         <div class="col-md-3" style="text-align: center;">
                           <h1 style="font-weight: bolder;">Price</h1>
                           <h3 *ngFor="let Comp of this.maintrial">{{Comp.itemprice}}</h3>
                         </div>
                       </div>
+                      <button mat-fab extended color="primary" (click)="this.AddProductsToCart()">
+                        <span style="font-size: large;">Add to cart</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                
+                      </button>
+
                     </section>
 
                     </div>
@@ -189,135 +188,3 @@
         </div>
       </div>
 </section>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-4">
-
-<!--
-          <div [hidden]="submitted">
-            <h1>build your pc</h1>
-            <form>
-
-                <div class="form-group">
-                  <label for="processor">processor</label>
-                  <mat-select class="form-control">
-                    <mat-option *ngFor="let pro of processors" [value]="pro.processorname">
-                      <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
-                      {{pro.processorname}}
-                    </mat-option>
-
-                  </mat-select>
-                </div>
-
-              <div class="form-group">
-                <label for="ram">ram</label>
-                <mat-select class="form-control" id="ram">
-                  <mat-option *ngFor="let rm of rams" [value]="rm.ramname">
-                    <img style="width: 40px;height: 40px;" src="assets/img/ram.jpg">
-                  {{rm.ramname}}
-                  </mat-option>
-                </mat-select>
-              </div>
-
-              <div class="form-group">
-                <label for="hard">hard</label>
-                <mat-select class="form-control" id="hard">
-                  <mat-option *ngFor="let hrd of hards" [value]="hrd.hardname">
-                    <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
-
-                    {{hrd.hardname}}</mat-option>
-                </mat-select>
-
-              </div>
-
-              <div class="form-group">
-                <mat-label for="gpu">GPU</mat-label>
-                <mat-select class="form-control">
-                  <mat-option *ngFor="let gp of gpus" [value]="gp.gpuname">
-                    <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
-                    {{gp.gpuname}}</mat-option>
-                </mat-select>
-
-              </div>
-
-              <div class="form-group">
-                <mat-label for="power">Power supply</mat-label>
-                <mat-select class="form-control">
-                  <mat-option *ngFor="let pow of powersupplys" [value]="pow.powername">
-                    <img style="width: 40px;height: 40px;" src="assets/img/core i5.jpg">
-
-                    {{pow.powername}}</mat-option>
-
-                </mat-select>
-
-              </div>
-
-              <button style="margin-top: 10px;" class="btn btn-primary" >Submit</button>
-
-
-            </form>
-          </div>
-
-        </div>
-        <div class="col-md-8">
-
-
--->
-
-
-          <!--
-                      <div [hidden]="!submitted">
-            <h2>You submitted the following:</h2>
-            <div class="row">
-              <div class="col-xs-3">Processor</div>
-              <div class="col-xs-9">{{ model.processor.processorname }}</div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">RAM</div>
-              <div class="col-xs-9">{{model.ram.ramname }}</div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Hard</div>
-              <div class="col-xs-9">{{ model.hard.hardname }}</div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Gpu</div>
-              <div class="col-xs-9">{{ model.gpu.gpuname }}</div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">PowerSupply</div>
-              <div class="col-xs-9">{{ model.powersupply.powername }}</div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">Total price</div>
-              <div class="col-xs-9">{{total + model.powersupply.price + model.gpu.price + model.hard.price + model.processor.price + model.ram.price   }} egp</div>
-            </div>
-            <br>
-            <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
-          </div>
-
-          -->
-<!--
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-</div>
--->
-
-<style>
-  .no-style .ng-valid {
-  border-left: 1px  solid #CCC
-}
-
-  .no-style .ng-invalid {
-  border-left: 1px  solid #CCC
-}
-</style>
