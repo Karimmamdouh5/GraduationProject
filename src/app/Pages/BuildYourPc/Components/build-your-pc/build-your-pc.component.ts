@@ -2,7 +2,9 @@ import { Product } from './../../../../Classes/product';
 import { Component } from '@angular/core';
 import { Builtpc } from 'src/app/Classes/builtpc';
 import { LookupDto } from 'src/app/Classes/lookup-dto';
+import { CartService } from 'src/app/Services/cart.service';
 import { ShopService } from 'src/app/Services/shop.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-build-your-pc',
@@ -12,9 +14,7 @@ import { ShopService } from 'src/app/Services/shop.service';
 export class BuildYourPcComponent
 {
 
-//MainComponents=['Processor','Motherboard','GPU','Power supply','Ram','Storage','Case','Monitor','Cooler'];
-
-maintrial:any=[/*{name:'processor',itemname:'xxxx',itemprice:0}*/];
+maintrial:any=[];
 Pc:Builtpc=new Builtpc();
 
 Products:Product[]=[];
@@ -23,7 +23,7 @@ SearchText='';
 
 
 
-constructor(public ShopSrv:ShopService)
+constructor(public ShopSrv:ShopService,public CartSrv:CartService)
 {
   this.ShopSrv.products=[]
   this.ShopSrv.GetAllProducts().subscribe(x=>
@@ -43,7 +43,7 @@ constructor(public ShopSrv:ShopService)
         this.Products=this.ShopSrv.products;
     });
 
-    this.ShopSrv.ListOfCategories().subscribe(x=>{this.ShopSrv.ProductsCategories=x.data});
+    this.ShopSrv.ListOfCategories().subscribe(x=>{this.ShopSrv.ProductsCategories=x.data.filter((c)=>{return c.isPcComponent==true})});
     
     this.Filter();
 
@@ -71,7 +71,6 @@ Filter()
   }
   */
  }
-
  FilterByText(category:LookupDto,Text:string)
  {
   if(Text==''||Text==null)
@@ -98,6 +97,43 @@ Filter()
   this.Pc.ProductsList.push(item);
   var obj = {name:item.category.name,itemname:item.name,itemprice:item.price};
   this.maintrial.push(obj);
+  }
+ }
+
+ addPcToCart(Pc:Builtpc)
+ {
+  
+  if(this.Pc.name==''||this.Pc.name==null)
+  {
+    Swal.fire
+    ({
+      title: 'Message!',
+      text: 'The Pc doesnt has any name , please enter your pc name',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });  
+    stop();
+  }
+  if((this.ShopSrv.ProductsCategories.some((i)=>{return i.selectedvalue==null||i.selectedvalue==''||i.selectedvalue==undefined})))
+  {    
+    Swal.fire
+    ({
+      title: 'Message!',
+      text: 'You have missed a component or more !',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    }); 
+    stop();
+  }
+  if((this.ShopSrv.ProductsCategories.some((i)=>{return i.selectedvalue==null||i.selectedvalue==''||i.selectedvalue==undefined}))==false && (this.Pc.name!=''))
+  {
+      for(var i of Pc.ProductsList)
+      {
+        Pc.price=Pc.price+i.price;
+      }
+      Pc.image=Pc.ProductsList.filter((i)=>i.category.name=="Case")[0].image;
+      this.CartSrv.addToCart(Pc,1);
+      this.CartSrv.openSnackBar();
   }
  }
 }

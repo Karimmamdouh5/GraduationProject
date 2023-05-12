@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from '../Classes/product';
 import { CartSnackBarComponent } from '../Pages/Shop/Components/cart-snack-bar/cart-snack-bar.component';
+import { Builtpc } from '../Classes/builtpc';
 
 @Injectable({
   providedIn: 'root'
