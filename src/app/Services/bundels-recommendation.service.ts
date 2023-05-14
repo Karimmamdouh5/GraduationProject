@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RecommendationBundles } from '../Classes/recommendation-bundles';
+import { HttpClient } from '@angular/common/http';
+import { MyResponse } from '../Classes/Myresponse';
+import { Observable } from 'rxjs';
+import { Purpose } from '../Classes/purpose';
 
 @Injectable({
   providedIn: 'root'
@@ -7,18 +11,20 @@ import { RecommendationBundles } from '../Classes/recommendation-bundles';
 export class BundelsRecommendationService {
 
 
-purpose='';
-DeviceType='';
-Purposes=
-[
-  'Low end gaming','Mid Range gaming','High end gaming','Education','Content creator'
-];
+  purp='';
+  DeviceType='';
+  Purposes:Purpose[]=
+  [
+    /*'Low end gaming','Mid Range gaming','High end gaming','Education','Content creator'*/
+  ];
+  ApiUrl='https://localhost:7202/api/';
 
   ComputerTypes=['Pc','Laptop'];
-  constructor() { }
+  constructor(public Http:HttpClient) { }
 
   Bundels : RecommendationBundles[]=
   [
+    /*
     {
       Name:'Low End Gaming Pc Build #1' ,
       Purpose:'Low end gaming',
@@ -169,24 +175,46 @@ Purposes=
       Image:'GraphicdesigningrenderingGaming.jpg',
       DeviceType:'Laptop'
     },
+    */
   ];
 
   FilteredBundels:RecommendationBundles[]=[];
 
   Recommend(Purpose:string,DeviceType:string)
   {
-    if(Purpose==''&&DeviceType!='')
+    this.FilteredBundels=this.Bundels;
+    if(Purpose==''&&DeviceType=='Pc')
     {
-      this.FilteredBundels=this.Bundels.filter((x)=>{return x.DeviceType===DeviceType});
+      this.FilteredBundels=this.Bundels.filter((x)=>{return x.isPc==true});
+    }
+    if(Purpose==''&&DeviceType=='Laptop')
+    {
+      this.FilteredBundels=this.Bundels.filter((x)=>{return x.isLaptop===true});
     }
     if(DeviceType==''&&Purpose!='')
     {
-      this.FilteredBundels=this.Bundels.filter((x)=>{return x.Purpose===Purpose});
-    }
-    if(Purpose !='' && DeviceType!='')
+      this.FilteredBundels=this.Bundels.filter((x)=>{return x.purpose.name===Purpose});   
+    } 
+    if(Purpose !='' && DeviceType=='Pc')
     {
-      this.FilteredBundels=this.Bundels.filter((x)=>{return x.Purpose===Purpose&&x.DeviceType===DeviceType});
+      this.FilteredBundels=this.Bundels.filter((x)=>{return x.purpose.name===Purpose&&x.isPc===true});
     }
+    if(Purpose !='' && DeviceType=='Laptop')
+    {
+      this.FilteredBundels=this.Bundels.filter((x)=>{return x.purpose.name===Purpose&&x.isLaptop===true});
+    }
+  }
+
+  GetAllComputers():Observable<MyResponse<RecommendationBundles>>
+  {
+    this.Bundels=[];
+    this.FilteredBundels=[];
+    return this.Http.get<MyResponse<RecommendationBundles>>(this.ApiUrl+'Computers/GetAllComputers');
+  }
+
+  GetAllCompPurposes():Observable<MyResponse<Purpose>>
+  {
+    return this.Http.get<MyResponse<Purpose>>(this.ApiUrl+'Computers/GetAllCompPurposes')
   }
 
 }

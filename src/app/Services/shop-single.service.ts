@@ -2,6 +2,7 @@ import { Product } from './../Classes/product';
 import { Injectable } from '@angular/core';
 import { ShopService } from './shop.service';
 import { RecommendedProduct } from '../Classes/recommended-product';
+import { RecommendationBundles } from '../Classes/recommendation-bundles';
 
 const { localStorage } = window;
 
@@ -14,13 +15,15 @@ export class ShopSingleService {
   
   RecommendedProducts:RecommendedProduct[]=[];
 
-  product:Product=new Product();
+  product:any;
   constructor(public ShopSrv:ShopService)
    {
     const productstring=localStorage.getItem('product');
     if(productstring!=null)
     {
     this.product=JSON.parse(productstring);
+    console.log(this.product);
+    
     }
     this.SelectRelatedProducts(this.product);
     this.RecommendedProducts=this.RecommendProducts(this.ShopSrv.products)
@@ -28,9 +31,12 @@ export class ShopSingleService {
 
   SelectRelatedProducts(product:Product)
 {
+  if(this.product.image!=null)
+  {
   var data=this.ShopSrv.products;
   data=data.filter((p)=>{return p.category.name==product.category.name && p.name!=product.name});
   this.RelatedProducts=data.slice(0,9);
+  }
 }
 
 RecommendProducts(arr: Product[]):RecommendedProduct[]

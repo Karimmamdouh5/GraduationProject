@@ -21,7 +21,7 @@ TotalPrice=0;
 durationInSeconds = 1;
 
 
-addToCart(Prod:Product,Qty:number)
+addToCart(Prod:any,Qty:number)
 {
   var items=this.CartItems;
   items=items.filter((x)=>{return x.name===Prod.name})

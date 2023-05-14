@@ -1,8 +1,11 @@
+import { Purpose } from "./purpose";
+
 export class RecommendationBundles {
-    Name='' ;
-    Purpose='';
-    Description='';
-    Price=0 ;
-    Image='';
-    DeviceType='';
+    name='' ;
+    purpose=new Purpose();
+    description='';
+    price=0 ;
+    imageUrl='';
+    isPc=false;
+    isLaptop=false;
 }
