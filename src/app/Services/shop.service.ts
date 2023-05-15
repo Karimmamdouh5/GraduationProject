@@ -24,8 +24,8 @@ export class ShopService
    Category='';
    SearchText='';
    EndPointProducts:MyResponse<ProductDto>=new MyResponse<ProductDto>();
-   ApiUrl='http://gradprojbackend-001-site1.htempurl.com/api/';
-
+   //ApiUrl='http://gradprojbackend-001-site1.htempurl.com/api/';
+   ApiUrl='https://localhost:7202/api/'
   constructor(public HTTP:HttpClient)
   {
     if(this.products.length==0)
