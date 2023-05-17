@@ -5,7 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class ServicesTrialService
 {
-  HelloText='Hello';
   Prop2='';
   constructor() { }
+
+  ToggleModal()
+  {
+    if(this.Prop2)
+    {
+      this.Prop2='none';
+    }
+    else
+    {
+    this.Prop2='block';
+    }
+  }
 }

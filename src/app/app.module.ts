@@ -49,6 +49,8 @@ import { RelatedProductsSectionComponent } from './Shared/related-products-secti
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { RelatedProductsComponent } from './Pages/ShopSingle/related-products/related-products.component';
+import { SignUpComponent } from './Shared/sign-up/sign-up.component';
+import { SignInComponent } from './Shared/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import { RelatedProductsComponent } from './Pages/ShopSingle/related-products/re
     MatSpinnerComponent,
     RecommedntaioSectionComponent,
     RelatedProductsSectionComponent,
-    RelatedProductsComponent
+    RelatedProductsComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
