@@ -10,58 +10,85 @@
           </button>
         </div>
         <div  class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <!---->
+                    <img *ngIf="imgsrc!=''" [src]="imgsrc" style="width:200px;height:200px;margin-left: 130px;">
+                    <img *ngIf="imgsrc==''" src="assets/img/avatar.png" style="width:200px;height:200px;margin-left: 130px;">
+
+                </div>
+            </div>
           <div class="row mt-2">
             <div class="col-md-6">
-              <label>First name : </label>
+              <label>First name <span style="color:red">(*)</span> : </label>
               <br>
-              <input class="ml-2" type="text"/>
+              <input [(ngModel)]="this.user.firstName" class="ml-2" type="text"/>
             </div>
             <div class="col-md-6">
-              <label>Last name : </label>
+              <label>Last name <span style="color:red">(*)</span> : </label>
               <br>
-              <input class="ml-2" type="text"/>
+              <input [(ngModel)]="this.user.lastName" class="ml-2" type="text"/>
             </div>
           </div>
 
           <div class="row mt-2">
             <div class="col-md-12">
-              <label>Phone number : </label>
+              <label>Phone number <span style="color:red">(*)</span> : </label>
               <br>
-              <input class="ml-2" style="width: 98.5%;" type="text"/>
-            </div>
-
-          </div>
-
-          <div class="row mt-2">
-            <div class="col-md-12">
-              <label>Email : </label>
-              <br>
-              <input class="ml-2" style="width: 98.5%;" type="email"/>
+              <input [(ngModel)]="this.user.phoneNumber" class="ml-2" style="width: 98.5%;" type="text"/>
             </div>
 
           </div>
 
           <div class="row mt-2">
             <div class="col-md-12">
-              <label>Password : </label>
+              <label>Landline number <span style="font-size: small;font-weight: lighter;">(optional)</span> : </label>
               <br>
-              <input class="ml-2" style="width: 98.5%;" type="password"/>
+              <input [(ngModel)]="this.user.landLineNumber" class="ml-2" style="width: 98.5%;" type="text"/>
             </div>
 
           </div>
 
           <div class="row mt-2">
             <div class="col-md-12">
-              <label>Confirm password : </label>
+              <label>Profile picture <span style="font-size: small;font-weight: lighter;">(optional)</span>  : </label>
               <br>
-              <input class="ml-2" style="width: 98.5%;" type="password"/>
+              <input accept="image/*" type="file" (change)="onFileSelected($event)">
+          </div>
+
+          </div>
+
+
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label>Email <span style="color:red">(*)</span> : </label>
+              <br>
+              <input [(ngModel)]="this.user.email" class="ml-2" style="width: 98.5%;" type="email"/>
+            </div>
+
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label>Password <span style="color:red">(*)</span> : </label>
+              <br>
+              <input [(ngModel)]="this.user.password" class="ml-2" style="width: 98.5%;" type="password"/>
+            </div>
+
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label>Confirm password <span style="color:red">(*)</span> : </label>
+              <br>
+              <input [(ngModel)]="this.user.confirmPassword" class="ml-2" style="width: 98.5%;" type="password"/>
             </div>
 
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Sign up</button>
+          <button type="button" class="btn btn-primary" (click)="AddUser()">Sign up</button>
         </div>
     </div>
   </div>

@@ -209,12 +209,12 @@ export class BundelsRecommendationService {
   {
     this.Bundels=[];
     this.FilteredBundels=[];
-    return this.Http.get<MyResponse<RecommendationBundles>>(this.ApiUrl+'Computers/GetAllComputers');
+    return this.Http.get<MyResponse<RecommendationBundles>>(this.ApiUrl+'/Computers/GetAllComputers');
   }
 
   GetAllCompPurposes():Observable<MyResponse<Purpose>>
   {
-    return this.Http.get<MyResponse<Purpose>>(this.ApiUrl+'Computers/GetAllCompPurposes')
+    return this.Http.get<MyResponse<Purpose>>(this.ApiUrl+'/Computers/GetAllCompPurposes')
   }
 
 }
