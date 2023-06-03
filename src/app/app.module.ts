@@ -51,6 +51,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { RelatedProductsComponent } from './Pages/ShopSingle/related-products/related-products.component';
 import { SignUpComponent } from './Shared/sign-up/sign-up.component';
 import { SignInComponent } from './Shared/sign-in/sign-in.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -106,8 +109,9 @@ import { SignInComponent } from './Shared/sign-in/sign-in.component';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatExpansionModule,
+    MatRadioModule
   ],
   providers: [HttpClientModule,
     MatSpinner,

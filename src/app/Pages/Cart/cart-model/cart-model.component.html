@@ -95,6 +95,82 @@
                       <h5>{{this.CartSrv.TotalPrice}}EGP</h5>
                     </div>
 
+                    <mat-accordion>
+                      <mat-expansion-panel hideToggle style="border: 1px solid darkred" >
+                        <mat-expansion-panel-header style="border: 1px solid darkred ">
+                          <mat-panel-title>
+                            <mat-radio-button (opened)="CreditpanelOpenState = true"
+                            (closed)="CreditpanelOpenState = false"></mat-radio-button>
+
+                            <img style="height: 40px;width: 40px;" src="https://www.talabat.com/assets/images/checkout-cc.svg">
+                            <span style="font-weight: bold;font-size: large;margin-left: 10px;">Credit Card</span>
+                            
+                          </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        <div class="row mt-2">
+                          <div class="col-md-12">
+                            <mat-label> Card Number </mat-label>
+                            <br>
+                            <input type="text" style="width: 100%;border-radius: 0.25rem;" >
+                          </div>
+                        </div>
+
+                        <div class="row mt-2">
+                    <div class="col-md-12">
+                          <mat-label>Expiry date</mat-label>
+                          <br>
+                          
+                          <mat-form-field style="width: 130px;margin-right: 20px;">
+
+                            <mat-select style="width: 110px;"  value="mm">
+                              <mat-option value="mm">mm</mat-option>
+                              <mat-option *ngFor="let month of this.Months">{{month}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field style="width: 130px;" >
+
+                          <mat-select style="width: 110px;" value="yy">
+                            <mat-option value="yy">yy</mat-option>
+                            <mat-option *ngFor="let year of this.Years">{{year}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+
+
+                        </div>
+                      </div>
+
+                        
+                        <div class="row mt-2">
+                          <div class="col-md-12">
+                              <mat-label> Card verification value</mat-label>
+                              <input type="password" style="border-radius: 0.25rem; margin-right: 10px;">
+                              <img src="https://www.talabat.com/assets/images/cvv_guide.png" style="width: 100px;height: 40px;">
+                          </div>
+                        </div>
+
+                      </mat-expansion-panel>
+                    </mat-accordion>
+
+                    <mat-accordion>
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <mat-radio-button></mat-radio-button>
+
+                            <img style="height: 40px;width: 40px;" src="https://www.talabat.com/assets/images/logo-cash.svg">
+                            <span style="font-weight: bold;font-size: large;margin-left: 10px;">Cash</span>
+                            
+                          </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+
+                        
+                      </mat-expansion-panel>
+                    </mat-accordion>
+
+
                     <button type="button" class="btn btn-primary btn-block btn-lg"
                       data-mdb-ripple-color="dark">
                       Check Out</button>
