@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AddUserRequest } from 'src/app/Classes/add-user-request';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,8 +16,9 @@ formData:FormData = new FormData();
 imgsrc='';
 headers = new HttpHeaders();
 byteArray = new Uint8Array();
-selectedFile:any=null;
+selectedFile:any;
 constructor(public UserSrv:UserService){}
+
 onFileSelected(event: any) {
   this.selectedFile = event.target.files[0];
   //if (this.selectedFile) {
@@ -30,14 +32,44 @@ onFileSelected(event: any) {
 }
 
 AddUser() {
- const fd = new FormData();
-  fd.append('image',this.selectedFile,this.selectedFile.name);
-  this.UserSrv.AddUser(this.user).subscribe(x => {
-    if (x.isSuccess == true) {
-      this.UserSrv.Uploadphoto(this.user.email, fd).subscribe(b => {
-        console.log(b.isSuccess);
-      });
+ var fd = new FormData();
+ fd.append('image',this.selectedFile,this.selectedFile.name);
+ fd.append('email',this.user.email);
+ this.user.isCustomer=true;
+
+ this.UserSrv.AddUser(this.user).subscribe(
+  firstresponse => {
+
+    if (firstresponse.isSuccess == true) {
+      this.UserSrv.Uploadphoto(fd).subscribe(
+        response =>
+         {
+          if(response.isSuccess==true)
+          {         
+             Swal.fire
+            ({
+              title: 'Message!',
+              text: firstresponse.message,
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+          }
+
+        },
+
+        )
     }
-  });
+  },
+  error=>
+  {
+    Swal.fire
+    ({
+      title: 'Message!',
+      text: error.error,
+      icon: 'error',
+      confirmButtonText: 'OK'
+    }); 
+  }
+  );
 }
 }

@@ -16,6 +16,7 @@ export class ShopSingleService {
   RecommendedProducts:RecommendedProduct[]=[];
 
   product:any;
+
   constructor(public ShopSrv:ShopService)
    {
     const productstring=localStorage.getItem('product');
@@ -39,21 +40,21 @@ export class ShopSingleService {
   }
 }
 
-RecommendProducts(arr: Product[]):RecommendedProduct[]
-{
-  var data = arr.filter((p)=>{return p.name!=this.product.name});
-  var shuffled = data.sort(() => 0.5 - Math.random()).map(
-    (product: Product) => {
-      var recommendedProduct = new RecommendedProduct();
-      recommendedProduct.category = product.category;
-      recommendedProduct.name = product.name;
-      recommendedProduct.price = product.price;
-      recommendedProduct.description = product.description;
-      recommendedProduct.image = product.image;
-      recommendedProduct.quantity = product.quantity;
-      return recommendedProduct;
-    }
-  );
-  return shuffled.slice(0, 4);   
-}
+  RecommendProducts(arr: Product[]):RecommendedProduct[]
+  {
+    var data = arr.filter((p)=>{return p.name!=this.product.name});
+    var shuffled = data.sort(() => 0.5 - Math.random()).map(
+      (product: Product) => {
+        var recommendedProduct = new RecommendedProduct();
+        recommendedProduct.category = product.category;
+        recommendedProduct.name = product.name;
+        recommendedProduct.price = product.price;
+        recommendedProduct.description = product.description;
+        recommendedProduct.image = product.image;
+        recommendedProduct.quantity = product.quantity;
+        return recommendedProduct;
+      }
+    );
+    return shuffled.slice(0, 4);   
+  }
 }

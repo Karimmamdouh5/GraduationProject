@@ -7,5 +7,7 @@ export class AddUserRequest
     lastName='';
     phoneNumber='';
     landLineNumber='';
+    isCustomer=false;
+    isEmployee=false;
    // ProfilePicture:any='';
 }

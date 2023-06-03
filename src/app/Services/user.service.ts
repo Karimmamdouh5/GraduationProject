@@ -7,8 +7,7 @@ import { MyResponse } from '../Classes/Myresponse';
   providedIn: 'root'
 })
 export class UserService {
-  //ApiUrl='http://gradprojbackend2-001-site1.btempurl.com/api';
-  ApiUrl='https://localhost:7202/api';
+  ApiUrl='http://gradprojbackend2-001-site1.btempurl.com/api';
   header:HttpHeaders=new HttpHeaders();
   constructor(public Http:HttpClient)
    { }
@@ -16,12 +15,11 @@ export class UserService {
    AddUser(body:any):Observable<MyResponse<string>>
    {
     console.log(body);
-    
-    return this.Http.post<MyResponse<string>>(this.ApiUrl+'/User/AddUser',body);
+    return this.Http.post<MyResponse<string>>(this.ApiUrl+'/User/AddUser',body,{headers:this.header});
    }
    
-   Uploadphoto(Email:string,Photo:any):Observable<MyResponse<any>>
+   Uploadphoto(Photo:any):Observable<MyResponse<any>>
    {
-    return this.Http.put<MyResponse<any>>(this.ApiUrl+'/User/UploadPhoto', {email:Email,photo:Photo},{headers:this.header});
+    return this.Http.put<MyResponse<any>>(this.ApiUrl+'/User/UploadPhoto', Photo,{headers:this.header});
    }
 }
