@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar'
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LoaderService } from 'src/app/Services/loader.service';
+import { ProductDto } from 'src/app/Classes/product-dto';
 
 const { localStorage } = window;
 
@@ -38,6 +39,8 @@ export class ShopProductsComponent implements OnInit {
 
   ngOnInit(): void
   {
+
+ 
     this.ShopSrv.GetAllProducts().subscribe(x=>
       {(
         this.ShopSrv.products=[],

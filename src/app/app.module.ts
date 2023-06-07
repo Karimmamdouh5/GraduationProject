@@ -1,5 +1,5 @@
 import { CartSnackBarComponent } from './Pages/Shop/Components/cart-snack-bar/cart-snack-bar.component';
-import { NgModule } from '@angular/core';
+import { NgModule , NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +53,11 @@ import { SignUpComponent } from './Shared/sign-up/sign-up.component';
 import { SignInComponent } from './Shared/sign-in/sign-in.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatStepperModule} from '@angular/material/stepper';
+import { CartStepperComponent } from './Pages/Cart/cart-stepper/cart-stepper.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -88,7 +93,8 @@ import {MatRadioModule} from '@angular/material/radio';
     RelatedProductsSectionComponent,
     RelatedProductsComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    CartStepperComponent
   ],
   imports: [
     BrowserModule,
@@ -111,11 +117,20 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCheckboxModule,
     MatButtonModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    MatStepperModule,  
+    MatButtonModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+
   ],
   providers: [HttpClientModule,
     MatSpinner,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

@@ -23,7 +23,7 @@ export class ShopService
    ProductsCategories:LookupDto[]=[];
    Category='';
    SearchText='';
-   EndPointProducts:MyResponse<ProductDto>=new MyResponse<ProductDto>();
+   EndPointProducts:MyResponse = {} as MyResponse;
    ApiUrl='http://gradprojbackend2-001-site1.btempurl.com/api/';
 
    //ApiUrl='https://localhost:7202/api/'
@@ -38,16 +38,16 @@ export class ShopService
        }
     }  }
 
-  GetAllProducts():Observable<MyResponse<ProductDto>>
+  GetAllProducts():Observable<MyResponse>
   {
     var api = this.ApiUrl+'Products/GetAllProducts';
-    return this.HTTP.get<MyResponse<ProductDto>>(api);
+    return this.HTTP.get<MyResponse>(api);
   }
 
-  ListOfCategories():Observable<MyResponse<LookupDto>>
+  ListOfCategories():Observable<MyResponse>
   {
     var api = this.ApiUrl+'Products/ListOfCategories';
-    return this.HTTP.get<MyResponse<LookupDto>>(api);
+    return this.HTTP.get<MyResponse>(api)
   }
 
   ShopProductsFilter(Category:string,SearchText?:string)

@@ -1,0 +1,20 @@
+.SignUpAnchor
+{
+    margin-top: 10px;
+    &:hover
+    {
+    cursor: pointer;
+    color: blue !important;  
+    text-decoration: underline !important;
+    }
+    width:50%;
+    margin-left: 180px;
+
+}
+.BackToSignIn
+{
+    &:hover
+    {
+    cursor: pointer;
+    } 
+}

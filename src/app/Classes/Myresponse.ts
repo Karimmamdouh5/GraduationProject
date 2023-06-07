@@ -1,6 +1,8 @@
-export class MyResponse <T>
+export interface MyResponse
 {
-  message='';
-  isSuccess:boolean=false;
-  data: T[]=[];
+  message:string,
+  isSuccess:boolean,
+  data: any[];
 };
+
+

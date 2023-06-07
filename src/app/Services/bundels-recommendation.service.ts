@@ -52,16 +52,16 @@ export class BundelsRecommendationService {
     }
   }
 
-  GetAllComputers():Observable<MyResponse<RecommendationBundles>>
+  GetAllComputers():Observable<MyResponse>
   {
     this.Bundels=[];
     this.FilteredBundels=[];
-    return this.Http.get<MyResponse<RecommendationBundles>>(this.ApiUrl+'/Computers/GetAllComputers');
+    return this.Http.get<MyResponse>(this.ApiUrl+'/Computers/GetAllComputers');
   }
 
-  GetAllCompPurposes():Observable<MyResponse<Purpose>>
+  GetAllCompPurposes():Observable<MyResponse>
   {
-    return this.Http.get<MyResponse<Purpose>>(this.ApiUrl+'/Computers/GetAllCompPurposes')
+    return this.Http.get<MyResponse>(this.ApiUrl+'/Computers/GetAllCompPurposes')
   }
 
 }

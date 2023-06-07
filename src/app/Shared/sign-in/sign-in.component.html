@@ -16,7 +16,7 @@
             <div class="col-md-12">
               <label>Email : </label>
               <br>
-              <input class="ml-2" style="width: 98.5%;" type="email"/>
+              <input class="ml-2" style="width: 98.5%;" type="email" [(ngModel)]="this.Username"/>
             </div>
 
           </div>
@@ -25,7 +25,7 @@
             <div class="col-md-12">
               <label>Password : </label>
               <br>
-              <input class="ml-2" style="width: 98.5%;" type="password"/>
+              <input class="ml-2" style="width: 98.5%;" type="password" [(ngModel)]="this.Password"/>
             </div>
 
           </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Sign in</button>
+          <button type="button" class="btn btn-primary" (click)="Login();">Sign in</button>
         </div>
     </div>
   </div>

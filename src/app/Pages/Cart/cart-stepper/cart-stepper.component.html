@@ -1,0 +1,297 @@
+<div class="modal fade" id="CartStepper" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 2000px;">
+    <div  class="modal-dialog" role="document"   style="width: 900px;margin-left:500px"  >
+      <div  class="modal-content"style="width: 900px;" >
+        <div class="modal-header" style="width: 900px;">
+          <h5 class="modal-title" id="exampleModalLabel"> <span style="font-size: large;font-weight: bold;">Checkout </span>
+            <svg style="margin-bottom: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+            </svg>
+        </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div  class="modal-body" style="width: 900px;" >
+
+    <mat-stepper  [linear]="isLinear"  #stepper >
+
+  <mat-step   *ngIf="this.UserSrv.user==null" [stepControl]="firstFormGroup" style="  pointer-events: none;">
+    <form >
+      <ng-template  matStepLabel><span style="font-size: large;font-weight: bold;">Sign in</span></ng-template>
+      <div *ngIf="this.SignUpShow==false" class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
+
+        <div class="row mt-2" style="margin-left: 100px;">
+          <div class="col-md-9">
+            <label><span style="font-size: large;font-weight: bold;">Email : </span></label>
+            <br>
+            <input class="ml-2" style="width: 98.5%;" type="email" [(ngModel)]="this.Username" [ngModelOptions]="{standalone:true}"/>
+          </div>
+
+        </div>
+
+
+
+        <div class="row mt-2" style="margin-left: 100px;">
+          <div class="col-md-9">
+            <label> <span style="font-size: large;font-weight: bold;">Password : </span></label>
+            <br>
+            <input class="ml-2" style="width: 98.5%;" type="password" [(ngModel)]="this.Password" [ngModelOptions]="{standalone:true}"/>
+          </div>
+
+        </div>
+
+        <button type="button" class="btn btn-primary mt-4" style="width: 100px;margin-left: 310px;" (click)="Login();">Sign in</button>
+        
+        <div class="row mt-2" style="text-align: center;">
+          <span style="font-size: large;font-weight: bold;">Or</span>
+          <br>
+          <a class="SignUpAnchor" (click)="this.ShowSignUpPage()" > <span style="font-size: large;font-weight: bold;">Create an account</span></a>
+        </div>
+
+      </div>
+
+      <div *ngIf="this.SignUpShow==true" class="row p-3" style="border: 1px solid black;border-radius: 0.25rem;">
+      
+        <!--<div class="row">
+          <div class="col-md-6">
+              
+              <img *ngIf="imgsrc!=''" [src]="imgsrc" style="width:200px;height:200px;margin-left: 50px;">
+              <img *ngIf="imgsrc==''" src="assets/img/avatar.png" style="width:200px;height:200px;margin-left: 130px;">
+
+          </div>
+      </div>
+      -->
+      
+      <div class="row mt-2 mb-2">
+        <a class="BackToSignIn" (click)="BackToSignIn()"><i class="fa fa-arrow-left"></i> Back to sign in</a>
+      </div>
+
+     <div class="row mt-2">
+      <div class="col-md-6">
+        <label>First name <span style="color:red">(*)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.firstName" class="ml-2" type="text"/>
+      </div>
+      <div class="col-md-6">
+        <label>Last name <span style="color:red">(*)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.lastName" class="ml-2" type="text"/>
+      </div>
+     </div>
+
+    <!--
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <label>Phone number <span style="color:red">(*)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.phoneNumber" class="ml-2" style="width: 98.5%;" type="text"/>
+      </div>
+
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <label>Landline number <span style="font-size: small;font-weight: lighter;">(optional)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.landLineNumber" class="ml-2" style="width: 98.5%;" type="text"/>
+      </div>
+
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <label>Profile picture <span style="font-size: small;font-weight: lighter;">(optional)</span>  : </label>
+        <br>
+        <input accept="image/*" type="file" (change)="onFileSelected($event)">
+    </div>
+
+    </div>
+    -->
+
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <label>Email <span style="color:red">(*)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.email" class="ml-2" style="width: 98.5%;" type="email"/>
+      </div>
+
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <label>Password <span style="color:red">(*)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.password" class="ml-2" style="width: 98.5%;" type="password"/>
+      </div>
+
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <label>Confirm password <span style="color:red">(*)</span> : </label>
+        <br>
+        <input [(ngModel)]="this.user.confirmPassword" class="ml-2" style="width: 98.5%;" type="password"/>
+      </div>
+
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+
+    <button type="button" style="width:100px;margin-left: 130px;" class="btn btn-primary" (click)="AddUser()">Sign up</button>
+      </div>
+    </div>
+      
+      </div>
+
+      
+      <div>
+        <button mat-button (click)="onNextClick()">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  <mat-step   [stepControl]="secondFormGroup">
+    <form >
+      <ng-template   matStepLabel> <span style="font-size: large;font-weight: bold;">Check payment method</span></ng-template>
+      <div class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
+      <mat-accordion>
+        <mat-expansion-panel #creditPanel hideToggle [ngStyle]="{'border':this.border}">
+          <mat-expansion-panel-header [ngStyle]="{'border':this.border}">
+            <mat-panel-title>
+              <mat-radio-button (opened)="CreditpanelOpenState = true"
+              (closed)="CreditpanelOpenState = false" (change)="this.CreditBorderToggle()"></mat-radio-button>
+
+              <img style="height: 40px;width: 40px;" src="https://www.talabat.com/assets/images/checkout-cc.svg">
+              <span style="font-weight: bold;font-size: large;margin-left: 10px;">Credit Card</span>
+              
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <mat-label> Card Number </mat-label>
+              <br>
+              <input type="text" style="width: 100%;border-radius: 0.25rem;" >
+            </div>
+          </div>
+
+          <div class="row mt-2">
+      <div class="col-md-12">
+            <mat-label>Expiry date</mat-label>
+            <br>
+            
+            <mat-form-field style="width: 130px;margin-right: 20px;">
+
+              <mat-select style="width: 110px;"  value="mm">
+                <mat-option value="mm">mm</mat-option>
+                <mat-option *ngFor="let month of this.Months">{{month}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field style="width: 130px;" >
+
+            <mat-select style="width: 110px;" value="yy">
+              <mat-option value="yy">yy</mat-option>
+              <mat-option *ngFor="let year of this.Years">{{year}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          </div>
+        </div>
+
+          
+          <div class="row mt-2">
+            <div class="col-md-12">
+                <mat-label> Card verification value</mat-label>
+                <input type="password" style="border-radius: 0.25rem; margin-right: 10px;">
+                <img src="https://www.talabat.com/assets/images/cvv_guide.png" style="width: 100px;height: 40px;">
+            </div>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion>
+        <mat-expansion-panel #cashPanel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-radio-button value="cash" (change)="this.closeCreditPanel(creditPanel,cashPanel)"></mat-radio-button>
+
+              <img style="height: 40px;width: 40px;" src="https://www.talabat.com/assets/images/logo-cash.svg">
+              <span style="font-weight: bold;font-size: large;margin-left: 10px;">Cash</span>
+              
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+          
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+<div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step >
+    <ng-template matStepLabel><span style="font-size: large;font-weight: bold;">Delivery&Contact data</span></ng-template>
+    <div class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
+    
+      <div class="container">
+        <div class="row">
+        <div class="col-md-6">
+
+          <h1 class="mb-2"> Delivery address  : </h1>
+
+          <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
+              <mat-label>Building number <span style="color:red">*</span></mat-label>
+
+              <input matInput type="number" />
+          </mat-form-field>
+
+
+          <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
+            <mat-label>Street name <span style="color:red">*</span></mat-label>
+
+            <input matInput type="text" />
+        </mat-form-field>
+
+        <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
+          <mat-label>District name <span style="color:red">*</span></mat-label>
+
+          <input matInput type="text" />
+      </mat-form-field>
+
+        </div>
+
+        <div class="col-md-6">
+          <h1 class="mb-2"> Contact data : </h1>
+          <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
+              <mat-label> Phone number <span style="color:red">*</span></mat-label>
+              <input matInput type="text"/>          
+          </mat-form-field>
+
+          <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
+            <mat-label>Landline number</mat-label>
+            <input matInput type="text" placeholder="(optional)" />          
+        </mat-form-field>
+        </div>
+
+      </div>
+       </div>
+  </div>
+    <div>
+      <button mat-button matStepperPrevious style="margin-top: 20px;">Back</button>
+      <button class="btn btn-success mt-2" style="float: right;">Confirm</button>
+    </div>
+  </mat-step>
+  
+    </mat-stepper>
+        </div>
+
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ export class CartService {
 CartItems:Product[]=[];
 TotalPrice=0;
 durationInSeconds = 1;
+CartStepperDisplay='none';
 
 
 addToCart(Prod:any,Qty:number)
