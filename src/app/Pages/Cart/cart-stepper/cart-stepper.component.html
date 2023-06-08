@@ -13,31 +13,33 @@
         </div>
         <div  class="modal-body" style="width: 900px;" >
 
-    <mat-stepper  [linear]="isLinear"  #stepper >
+    <mat-stepper  [linear]="isLinear"  #stepper [(selectedIndex)]="currentStepIndex">
 
-  <mat-step   *ngIf="this.UserSrv.user==null" [stepControl]="firstFormGroup" style="  pointer-events: none;">
-    <form >
+  <mat-step [stepControl]="firstFormGroup" [editable]="false" style="  pointer-events: none;">
+    <form [formGroup]="firstFormGroup">
       <ng-template  matStepLabel><span style="font-size: large;font-weight: bold;">Sign in</span></ng-template>
       <div *ngIf="this.SignUpShow==false" class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
 
-        <div class="row mt-2" style="margin-left: 100px;">
+        <div class="row mt-2" style="margin-left: 230px;">
           <div class="col-md-9">
-            <label><span style="font-size: large;font-weight: bold;">Email : </span></label>
-            <br>
-            <input class="ml-2" style="width: 98.5%;" type="email" [(ngModel)]="this.Username" [ngModelOptions]="{standalone:true}"/>
+            
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="this.Username" [ngModelOptions]="{standalone:true}" formControlName="username" required>
+            </mat-form-field>
           </div>
 
         </div>
 
 
 
-        <div class="row mt-2" style="margin-left: 100px;">
+        <div class="row mt-2" style="margin-left: 230px;">
           <div class="col-md-9">
-            <label> <span style="font-size: large;font-weight: bold;">Password : </span></label>
-            <br>
-            <input class="ml-2" style="width: 98.5%;" type="password" [(ngModel)]="this.Password" [ngModelOptions]="{standalone:true}"/>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" [(ngModel)]="this.Password" [ngModelOptions]="{standalone:true}" formControlName="password" required>
+            </mat-form-field>
           </div>
-
         </div>
 
         <button type="button" class="btn btn-primary mt-4" style="width: 100px;margin-left: 310px;" (click)="Login();">Sign in</button>
@@ -145,12 +147,12 @@
 
       
       <div>
-        <button mat-button (click)="onNextClick()">Next</button>
+        
       </div>
     </form>
   </mat-step>
   
-  <mat-step   [stepControl]="secondFormGroup">
+  <mat-step   [stepControl]="secondFormGroup" >
     <form >
       <ng-template   matStepLabel> <span style="font-size: large;font-weight: bold;">Check payment method</span></ng-template>
       <div class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">

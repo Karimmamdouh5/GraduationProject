@@ -24,19 +24,21 @@ export class CartStepperComponent
   border='none';
   SignUpShow=false;
   user:AddUserRequest=new AddUserRequest();
-
+  currentStepIndex:number=0;
 
   @ViewChild('stepper') stepper: MatStepper|undefined;
   @ViewChild('creditPanel') creditPanel: MatExpansionPanel | undefined;
   @ViewChild('cashPanel') cashPanel: MatExpansionPanel | undefined;
 
   public firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    username: ['', Validators.required],
+    password:['',Validators.required]
   });
   public secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  isLinear = false;
+  isLinear = true;
+  isOptional = false;
 
   constructor(public _formBuilder: FormBuilder,public CartSrv:CartService,public UserSrv:UserService)
    {
@@ -44,6 +46,8 @@ export class CartStepperComponent
     for (let index = 0; index < 11; index++) {
       this.Years.push(CurrentYear+index)
     }  
+    console.log(this.UserSrv.user);
+    
    }
 
 
@@ -59,11 +63,12 @@ export class CartStepperComponent
             Swal.fire
             ({
               title: 'Message!',
-              text: 'Done',
+              text: 'Hello , '+this.UserSrv.user.firstName +' !',
               icon: 'success',
               confirmButtonText: 'OK'
             }); 
             console.log(this.UserSrv.user);
+            this.currentStepIndex++;
             
           }
           else{console.log('something wrong');}
@@ -102,6 +107,9 @@ export class CartStepperComponent
     if(this.UserSrv.user!=null)
     {
       this.stepper?.next();
+      this.currentStepIndex++;
+      console.log(this.currentStepIndex);
+      
     }
     else
     {
