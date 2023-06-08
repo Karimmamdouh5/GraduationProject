@@ -26,6 +26,7 @@
             <mat-form-field>
               <mat-label>Email</mat-label>
               <input matInput [(ngModel)]="this.Username" [ngModelOptions]="{standalone:true}" formControlName="username" required>
+              <mat-error *ngIf="this.firstFormGroup.controls.username.hasError('required')">Email is <strong>required</strong></mat-error>
             </mat-form-field>
           </div>
 
@@ -38,6 +39,7 @@
             <mat-form-field>
               <mat-label>Password</mat-label>
               <input matInput type="password" [(ngModel)]="this.Password" [ngModelOptions]="{standalone:true}" formControlName="password" required>
+              <mat-error *ngIf="this.firstFormGroup.controls.password.hasError('required')">password is <strong>required</strong></mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -147,7 +149,7 @@
 
       
       <div>
-        
+
       </div>
     </form>
   </mat-step>

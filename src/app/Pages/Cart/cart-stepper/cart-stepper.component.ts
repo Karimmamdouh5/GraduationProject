@@ -46,8 +46,7 @@ export class CartStepperComponent
     for (let index = 0; index < 11; index++) {
       this.Years.push(CurrentYear+index)
     }  
-    console.log(this.UserSrv.user);
-    
+    this.firstFormGroup.controls.username.hasError('username');
    }
 
 
