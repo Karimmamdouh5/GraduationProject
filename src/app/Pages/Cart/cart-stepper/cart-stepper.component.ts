@@ -231,6 +231,14 @@ export class CartStepperComponent
     else
     {
       //submit order
+
+      Swal.fire
+      ({
+        title: 'Message!',
+        text: 'Order submitted successfully !',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });  
     }
   }
   Back()
