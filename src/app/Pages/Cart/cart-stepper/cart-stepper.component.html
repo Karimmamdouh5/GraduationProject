@@ -15,7 +15,7 @@
 
     <mat-stepper  [linear]="isLinear"  #stepper [(selectedIndex)]="currentStepIndex">
 
-  <mat-step [stepControl]="firstFormGroup" [editable]="false" style="  pointer-events: none;">
+  <mat-step [stepControl]="firstFormGroup" [editable]="false">
     <form [formGroup]="firstFormGroup">
       <ng-template  matStepLabel><span style="font-size: large;font-weight: bold;">Sign in</span></ng-template>
       <div *ngIf="this.SignUpShow==false" class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
@@ -55,61 +55,6 @@
       </div>
 
       <div *ngIf="this.SignUpShow==true" class="row p-3" style="border: 1px solid black;border-radius: 0.25rem;">
-      
-        <!--<div class="row">
-          <div class="col-md-6">
-              
-              <img *ngIf="imgsrc!=''" [src]="imgsrc" style="width:200px;height:200px;margin-left: 50px;">
-              <img *ngIf="imgsrc==''" src="assets/img/avatar.png" style="width:200px;height:200px;margin-left: 130px;">
-
-          </div>
-      </div>
-      -->
-      
-      <div class="row mt-2 mb-2">
-        <a class="BackToSignIn" (click)="BackToSignIn()"><i class="fa fa-arrow-left"></i> Back to sign in</a>
-      </div>
-
-     <div class="row mt-2">
-      <div class="col-md-6">
-        <label>First name <span style="color:red">(*)</span> : </label>
-        <br>
-        <input [(ngModel)]="this.user.firstName" class="ml-2" type="text"/>
-      </div>
-      <div class="col-md-6">
-        <label>Last name <span style="color:red">(*)</span> : </label>
-        <br>
-        <input [(ngModel)]="this.user.lastName" class="ml-2" type="text"/>
-      </div>
-     </div>
-
-    <!--
-    <div class="row mt-2">
-      <div class="col-md-12">
-        <label>Phone number <span style="color:red">(*)</span> : </label>
-        <br>
-        <input [(ngModel)]="this.user.phoneNumber" class="ml-2" style="width: 98.5%;" type="text"/>
-      </div>
-
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-md-12">
-        <label>Landline number <span style="font-size: small;font-weight: lighter;">(optional)</span> : </label>
-        <br>
-        <input [(ngModel)]="this.user.landLineNumber" class="ml-2" style="width: 98.5%;" type="text"/>
-      </div>
-
-    </div>
-    <div class="row mt-2">
-      <div class="col-md-12">
-        <label>Profile picture <span style="font-size: small;font-weight: lighter;">(optional)</span>  : </label>
-        <br>
-        <input accept="image/*" type="file" (change)="onFileSelected($event)">
-    </div>
-
-    </div>
-    -->
 
     <div class="row mt-2">
       <div class="col-md-12">
@@ -154,16 +99,17 @@
     </form>
   </mat-step>
   
-  <mat-step   [stepControl]="secondFormGroup" >
-    <form >
-      <ng-template   matStepLabel> <span style="font-size: large;font-weight: bold;">Check payment method</span></ng-template>
+  <mat-step [stepControl]="secondFormGroup" >
+      <ng-template matStepLabel> <span style="font-size: large;font-weight: bold;">Check payment method</span></ng-template>
+
       <div class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
-      <mat-accordion>
-        <mat-expansion-panel #creditPanel hideToggle [ngStyle]="{'border':this.border}">
+
+        <mat-accordion>
+        <mat-expansion-panel  [expanded]="isCreditPayment" #creditPanel hideToggle [ngStyle]="{'border':this.border}">
           <mat-expansion-panel-header [ngStyle]="{'border':this.border}">
             <mat-panel-title>
               <mat-radio-button (opened)="CreditpanelOpenState = true"
-              (closed)="CreditpanelOpenState = false" (change)="this.CreditBorderToggle()"></mat-radio-button>
+              (closed)="CreditpanelOpenState = false" (change)="this.CreditPaymentToggle()"></mat-radio-button>
 
               <img style="height: 40px;width: 40px;" src="https://www.talabat.com/assets/images/checkout-cc.svg">
               <span style="font-weight: bold;font-size: large;margin-left: 10px;">Credit Card</span>
@@ -171,56 +117,116 @@
             </mat-panel-title>
 
           </mat-expansion-panel-header>
-          <div class="row mt-2">
+          <form *ngIf="this.isCreditPayment==true" [formGroup]="secondFormGroup">
+
+          <div class="row mt-2" >
             <div class="col-md-12">
+              <mat-form-field>
               <mat-label> Card Number </mat-label>
-              <br>
-              <input type="text" style="width: 100%;border-radius: 0.25rem;" >
+              <input matInput type="text" style="width: 100%;border-radius: 0.25rem;" formControlName="CardNumber" required>
+              <mat-error *ngIf="this.secondFormGroup.controls.CardNumber.hasError('required')">Card number is <strong>required</strong></mat-error>
+            </mat-form-field>
             </div>
           </div>
 
           <div class="row mt-2">
-      <div class="col-md-12">
-            <mat-label>Expiry date</mat-label>
-            <br>
-            
-            <mat-form-field style="width: 130px;margin-right: 20px;">
-
-              <mat-select style="width: 110px;"  value="mm">
-                <mat-option value="mm">mm</mat-option>
-                <mat-option *ngFor="let month of this.Months">{{month}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field style="width: 130px;" >
-
-            <mat-select style="width: 110px;" value="yy">
-              <mat-option value="yy">yy</mat-option>
-              <mat-option *ngFor="let year of this.Years">{{year}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+            <div class="col-md-12">
+                  <mat-label>Expiry date</mat-label>
+                  <br>
+                  
+                  <mat-form-field style="width: 230px;margin-right: 20px;">
+                    <mat-label>MM</mat-label>
+                    <mat-select [formControl]="this.secondFormGroup.controls.ExpiryDateMonth" required>
+                      <mat-option *ngFor="let month of this.Months" [value]="month">{{month}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="this.secondFormGroup.controls.ExpiryDateMonth.hasError('required')">Expiry date month is <strong>required</strong></mat-error>
+                  </mat-form-field>
 
 
+                <mat-form-field style="width: 230px;" >
+                  <mat-label>YY</mat-label>
+                  <mat-select [formControl]="this.secondFormGroup.controls.ExpiryDateYear" required>
+                    <mat-option *ngFor="let year of this.Years" [value]="year">{{year}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="this.secondFormGroup.controls.ExpiryDateYear.hasError('required')">Expiry date year is <strong>required</strong></mat-error>
+                </mat-form-field>
+
+
+                </div>
           </div>
-        </div>
 
           
-          <div class="row mt-2">
+          <div class="row" style="margin-top: 40px;">
             <div class="col-md-12">
+              <mat-form-field>
                 <mat-label> Card verification value</mat-label>
-                <input type="password" style="border-radius: 0.25rem; margin-right: 10px;">
-                <img src="https://www.talabat.com/assets/images/cvv_guide.png" style="width: 100px;height: 40px;">
+                <input matInput type="password" style="border-radius: 0.25rem; margin-right: 10px;" formControlName="VerificationValue" required>
+                <mat-error *ngIf="this.secondFormGroup.controls.VerificationValue.hasError('required')">Card verification value is <strong>required</strong></mat-error>
+              </mat-form-field>
+              <img src="https://www.talabat.com/assets/images/cvv_guide.png" style="width: 100px;height: 40px;margin-left: 20px;">
+            </div>
+          </div>
+        </form>
+
+        <form *ngIf="this.isCreditPayment==false" [formGroup]="secondFormGroup">
+
+          <div class="row mt-2" >
+            <div class="col-md-12">
+              <mat-form-field>
+              <mat-label> Card Number </mat-label>
+              <input matInput type="text" style="width: 100%;border-radius: 0.25rem;" formControlName="CardNumber">
+              <mat-error *ngIf="this.secondFormGroup.controls.CardNumber.hasError('required')">Card number is <strong>required</strong></mat-error>
+            </mat-form-field>
             </div>
           </div>
 
+          <div class="row mt-2">
+            <div class="col-md-12">
+                  <mat-label>Expiry date</mat-label>
+                  <br>
+                  
+                  <mat-form-field style="width: 230px;margin-right: 20px;">
+                    <mat-label>MM</mat-label>
+                    <mat-select [formControl]="this.secondFormGroup.controls.ExpiryDateMonth" >
+                      <mat-option *ngFor="let month of this.Months" [value]="month">{{month}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="this.secondFormGroup.controls.ExpiryDateMonth.hasError('required')">Expiry date month is <strong>required</strong></mat-error>
+                  </mat-form-field>
+
+
+                <mat-form-field style="width: 230px;" >
+                  <mat-label>YY</mat-label>
+                  <mat-select [formControl]="this.secondFormGroup.controls.ExpiryDateYear" >
+                    <mat-option *ngFor="let year of this.Years" [value]="year">{{year}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="this.secondFormGroup.controls.ExpiryDateYear.hasError('required')">Expiry date year is <strong>required</strong></mat-error>
+                </mat-form-field>
+
+
+                </div>
+          </div>
+
+          
+          <div class="row" style="margin-top: 40px;" >
+            <div class="col-md-12">
+              <mat-form-field>
+                <mat-label> Card verification value</mat-label>
+                <input matInput type="password" style="border-radius: 0.25rem; margin-right: 10px;" formControlName="VerificationValue" >
+                <mat-error *ngIf="this.secondFormGroup.controls.VerificationValue.hasError('required')">Card verification value is <strong>required</strong></mat-error>
+              </mat-form-field>
+              <img src="https://www.talabat.com/assets/images/cvv_guide.png" style="width: 100px;height: 40px;margin-left: 20px;">
+            </div>
+          </div>
+        </form>
         </mat-expansion-panel>
       </mat-accordion>
 
+
       <mat-accordion>
-        <mat-expansion-panel #cashPanel hideToggle>
+        <mat-expansion-panel [expanded]="isCashPayment" #cashPanel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-radio-button value="cash" (change)="this.closeCreditPanel(creditPanel,cashPanel)"></mat-radio-button>
+              <mat-radio-button value="cash" (change)="this.CashPaymentToggle()"></mat-radio-button>
 
               <img style="height: 40px;width: 40px;" src="https://www.talabat.com/assets/images/logo-cash.svg">
               <span style="font-weight: bold;font-size: large;margin-left: 10px;">Cash</span>
@@ -232,64 +238,74 @@
           
         </mat-expansion-panel>
       </mat-accordion>
-    </div>
-<div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
       </div>
-    </form>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onNextClick()">Next</button>
+      </div>
   </mat-step>
 
-  <mat-step >
+  <mat-step [stepControl]="thirdFormGroup">
     <ng-template matStepLabel><span style="font-size: large;font-weight: bold;">Delivery&Contact data</span></ng-template>
     <div class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
     
+      <form [formGroup]="thirdFormGroup">
+
       <div class="container">
         <div class="row">
         <div class="col-md-6">
 
+
           <h1 class="mb-2"> Delivery address  : </h1>
 
           <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
-              <mat-label>Building number <span style="color:red">*</span></mat-label>
-
-              <input matInput type="number" />
+              <mat-label>Building number</mat-label>
+              <input matInput type="number" formControlName="BuildingNumber" required>
+              <mat-error *ngIf="this.thirdFormGroup.controls.BuildingNumber.hasError('required')">Building number is <strong>required</strong></mat-error>
           </mat-form-field>
 
 
           <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
-            <mat-label>Street name <span style="color:red">*</span></mat-label>
-
-            <input matInput type="text" />
+            <mat-label>Street name </mat-label>
+            <input matInput type="text" formControlName="StreetName" required>
+            <mat-error *ngIf="this.thirdFormGroup.controls.StreetName.hasError('required')">Street name is <strong>required</strong></mat-error>
         </mat-form-field>
 
         <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
-          <mat-label>District name <span style="color:red">*</span></mat-label>
-
-          <input matInput type="text" />
+          <mat-label>District name </mat-label>
+          <input matInput type="text" formControlName="DistrictName" required>
+          <mat-error *ngIf="this.thirdFormGroup.controls.BuildingNumber.hasError('required')">District name is <strong>required</strong></mat-error>
       </mat-form-field>
-
         </div>
 
         <div class="col-md-6">
           <h1 class="mb-2"> Contact data : </h1>
           <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
-              <mat-label> Phone number <span style="color:red">*</span></mat-label>
-              <input matInput type="text"/>          
+              <mat-label> Phone number </mat-label>
+              <input matInput type="text" formControlName="Phonenumber" required>
+              <mat-error *ngIf="this.thirdFormGroup.controls.BuildingNumber.hasError('required')">Phone number is <strong>required</strong></mat-error>       
           </mat-form-field>
 
           <mat-form-field class="mt-2 mat-elevation-z24 p-3 pb-0">
             <mat-label>Landline number</mat-label>
-            <input matInput type="text" placeholder="(optional)" />          
+            <input matInput type="text" placeholder="(optional)" formControlName="LandlineNumber">        
         </mat-form-field>
+        
         </div>
+        
 
       </div>
+      
        </div>
+      </form>
+
   </div>
     <div>
-      <button mat-button matStepperPrevious style="margin-top: 20px;">Back</button>
-      <button class="btn btn-success mt-2" style="float: right;">Confirm</button>
+      
+      
+      <button mat-button (click)="Back()" style="margin-top: 20px;">Back</button>
+      <button class="btn btn-success mt-2" style="float: right;" (click)="Confirmation()">Confirm</button>
     </div>
   </mat-step>
   

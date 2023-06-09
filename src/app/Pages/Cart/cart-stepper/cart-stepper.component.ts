@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatStepper } from '@angular/material/stepper';
@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
   selector: 'app-cart-stepper',
   templateUrl: './cart-stepper.component.html',
   styleUrls: ['./cart-stepper.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class CartStepperComponent 
 {
@@ -19,6 +21,9 @@ export class CartStepperComponent
 
 
   CreditpanelOpenState = false;
+  isCreditPayment=false;
+  isCashPayment=false;
+  isExpanded = false;
   Months=[1,2,3,4,5,6,7,8,9,10,11,12];
   Years:number[]=[];
   border='none';
@@ -30,15 +35,9 @@ export class CartStepperComponent
   @ViewChild('creditPanel') creditPanel: MatExpansionPanel | undefined;
   @ViewChild('cashPanel') cashPanel: MatExpansionPanel | undefined;
 
-  public firstFormGroup = this._formBuilder.group({
-    username: ['', Validators.required],
-    password:['',Validators.required]
-  });
-  public secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
+ 
+
   isLinear = true;
-  isOptional = false;
 
   constructor(public _formBuilder: FormBuilder,public CartSrv:CartService,public UserSrv:UserService)
    {
@@ -48,6 +47,23 @@ export class CartStepperComponent
     }  
    }
 
+   public firstFormGroup = this._formBuilder.group({
+    username: ['', Validators.required],
+    password:['',Validators.required]
+  });
+  public secondFormGroup = this._formBuilder.group({
+    CardNumber: [''],
+    ExpiryDateMonth: [''],
+    ExpiryDateYear: [''],
+    VerificationValue: ['']
+  });
+  public thirdFormGroup =this ._formBuilder.group({
+    BuildingNumber: ['', Validators.required],
+    StreetName: ['', Validators.required],
+    DistrictName: ['', Validators.required],
+    Phonenumber: ['', Validators.required],
+    LandlineNumber: [''],
+  });
 
   Login()
   {
@@ -66,7 +82,6 @@ export class CartStepperComponent
               icon: 'success',
               confirmButtonText: 'OK'
             }); 
-            console.log(this.UserSrv.user);
             this.currentStepIndex++;
             
           }
@@ -84,42 +99,40 @@ export class CartStepperComponent
         }
       )
   }
-  closeCashPanel(panel: MatExpansionPanel) {
-    panel.close();
-  }
-  closeCreditPanel(creditPanel: MatExpansionPanel,cashPanel:MatExpansionPanel)
- {
-  creditPanel.close();
-  this.closeCashPanel(cashPanel);
-  //this.border='none';
-  }
   CreditBorderToggle()
   {
-    if(this.border=='none')
-    {
       this.border='1px solid darkred';
-    }
-    else{this.border='none';}
+      this.CreditpanelOpenState=true;
   }
   onNextClick() 
   {
-    if(this.UserSrv.user!=null)
-    {
-      this.stepper?.next();
-      this.currentStepIndex++;
-      console.log(this.currentStepIndex);
+
+    var controls=[this.secondFormGroup.controls.CardNumber,this.secondFormGroup.controls.ExpiryDateMonth,this.secondFormGroup.controls.ExpiryDateYear,this.secondFormGroup.controls.VerificationValue]    
+    var haserror:boolean=false;
+    controls.forEach(c=>
+      {
+        if(c.value=='')
+        {
+          haserror=true;
+        }
+      })    
       
-    }
-    else
-    {
-      Swal.fire
-      ({
-        title: 'Message!',
-        text: 'Please check your credintials for sign in !',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      }); 
-    }
+    if((this.isCreditPayment==true && !haserror)||this.isCashPayment==true)
+        {
+          this.currentStepIndex=this.currentStepIndex+1;
+          //console.log(this.currentStepIndex);
+          //console.log(haserror);
+        }
+        else
+        {
+          Swal.fire
+          ({
+            title: 'Message!',
+            text: 'Please check your payment type !',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+          });  
+        }
   }
   ShowSignUpPage()
   {
@@ -167,5 +180,62 @@ export class CartStepperComponent
        }); 
      }
      );
-   }
+  }
+  CreditPaymentToggle()
+  {
+    this.isCreditPayment=true;
+    this.isCashPayment=false;
+
+     this.secondFormGroup.controls.CardNumber.updateValueAndValidity();
+     this.secondFormGroup.controls.ExpiryDateMonth.updateValueAndValidity();
+     this.secondFormGroup.controls.ExpiryDateYear.updateValueAndValidity();
+     this.secondFormGroup.controls.VerificationValue.updateValueAndValidity();
+
+     this.border='1px solid darkred';
+     this.CreditpanelOpenState=true;
+  }
+  CashPaymentToggle()
+  {
+    this.isCashPayment=true;
+    this.isCreditPayment=false;
+
+    this.secondFormGroup.controls.CardNumber.updateValueAndValidity();
+    this.secondFormGroup.controls.ExpiryDateMonth.updateValueAndValidity();
+    this.secondFormGroup.controls.ExpiryDateYear.updateValueAndValidity();
+    this.secondFormGroup.controls.VerificationValue.updateValueAndValidity();
+    
+
+    this.border='none';
+    this.CreditpanelOpenState=true;
+  }
+  Confirmation()
+  {
+    var controls=[this.thirdFormGroup.controls.BuildingNumber,this.thirdFormGroup.controls.DistrictName,this.thirdFormGroup.controls.Phonenumber,this.thirdFormGroup.controls.StreetName];
+    var haserror=false;
+    controls.forEach(e=>{
+      if(e.hasError('required'))
+      {
+        haserror=true;
+      }
+    })   
+    if(haserror)
+    {
+      Swal.fire
+      ({
+        title: 'Message!',
+        text: 'Please fill all the required fields !',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      });  
+    }
+    else
+    {
+      //submit order
+    }
+  }
+  Back()
+  {
+    this.currentStepIndex--;
+  }
+
 }
