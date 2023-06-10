@@ -19,6 +19,7 @@ export class CartStepperComponent
   Username='';
   Password='';
 
+  
 
   CreditpanelOpenState = false;
   isCreditPayment=false;
@@ -148,6 +149,9 @@ export class CartStepperComponent
     // fd.append('email',this.user.email);
     // this.user.isCustomer=true;
    
+    console.log(this.user);
+    this.user.isCustomer=true;
+    
     this.UserSrv.AddUser(this.user).subscribe(
      firstresponse => {
    

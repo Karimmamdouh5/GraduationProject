@@ -17,7 +17,7 @@ export class BundelsRecommendationService {
   [
     /*'Low end gaming','Mid Range gaming','High end gaming','Education','Content creator'*/
   ];
-  ApiUrl='http://gradprojbackend2-001-site1.btempurl.com/api';
+  ApiUrl='http://gradprojbackend3-001-site1.atempurl.com/api';
   //ApiUrl='https://localhost:7202/api/'
   ComputerTypes=['Pc','Laptop'];
   constructor(public Http:HttpClient) { }

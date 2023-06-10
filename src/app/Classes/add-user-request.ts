@@ -5,8 +5,6 @@ export class AddUserRequest
     confirmPassword='';
     firstName='';
     lastName='';
-    phoneNumber='';
-    landLineNumber='';
     isCustomer=false;
     isEmployee=false;
    // ProfilePicture:any='';

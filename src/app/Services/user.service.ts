@@ -7,7 +7,7 @@ import { MyResponse } from '../Classes/Myresponse';
   providedIn: 'root'
 })
 export class UserService {
-  ApiUrl='http://gradprojbackend2-001-site1.btempurl.com/api';
+  ApiUrl='http://gradprojbackend3-001-site1.atempurl.com/api';
  // ApiUrl='https://localhost:7202/api'
   header:HttpHeaders=new HttpHeaders();
   user:any;

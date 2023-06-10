@@ -17,6 +17,7 @@
 
   <mat-step [stepControl]="firstFormGroup" [editable]="false">
     <form [formGroup]="firstFormGroup">
+
       <ng-template  matStepLabel><span style="font-size: large;font-weight: bold;">Sign in</span></ng-template>
       <div *ngIf="this.SignUpShow==false" class="row p-5" style="border: 1px solid black;border-radius: 0.25rem;">
 
@@ -55,12 +56,25 @@
       </div>
 
       <div *ngIf="this.SignUpShow==true" class="row p-3" style="border: 1px solid black;border-radius: 0.25rem;">
+         
+        <div class="row mt-2">
+            <div class="col-md-6">
+              <label>First name <span style="color:red">(*)</span> : </label>
+              <br>
+              <input [(ngModel)]="this.user.firstName" [ngModelOptions]="{standalone:true}" class="ml-2" type="text"/>
+            </div>
+            <div class="col-md-6">
+              <label>Last name <span style="color:red">(*)</span> : </label>
+              <br>
+              <input [(ngModel)]="this.user.lastName" [ngModelOptions]="{standalone:true}" class="ml-2" type="text"/>
+            </div>
+          </div>
 
     <div class="row mt-2">
       <div class="col-md-12">
         <label>Email <span style="color:red">(*)</span> : </label>
         <br>
-        <input [(ngModel)]="this.user.email" class="ml-2" style="width: 98.5%;" type="email"/>
+        <input [(ngModel)]="this.user.email" [ngModelOptions]="{standalone:true}" class="ml-2" style="width: 98.5%;" type="email"/>
       </div>
 
     </div>
@@ -69,7 +83,7 @@
       <div class="col-md-12">
         <label>Password <span style="color:red">(*)</span> : </label>
         <br>
-        <input [(ngModel)]="this.user.password" class="ml-2" style="width: 98.5%;" type="password"/>
+        <input [(ngModel)]="this.user.password" [ngModelOptions]="{standalone:true}" class="ml-2" style="width: 98.5%;" type="password"/>
       </div>
 
     </div>
@@ -78,7 +92,7 @@
       <div class="col-md-12">
         <label>Confirm password <span style="color:red">(*)</span> : </label>
         <br>
-        <input [(ngModel)]="this.user.confirmPassword" class="ml-2" style="width: 98.5%;" type="password"/>
+        <input [(ngModel)]="this.user.confirmPassword" [ngModelOptions]="{standalone:true}" class="ml-2" style="width: 98.5%;" type="password"/>
       </div>
 
     </div>
