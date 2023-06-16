@@ -1,4 +1,4 @@
-import { Product } from './../Classes/product';
+import { ShopProduct } from './../Classes/ShopProduct';
 import { Injectable } from '@angular/core';
 import { ShopService } from './shop.service';
 import { RecommendedProduct } from '../Classes/recommended-product';
@@ -11,7 +11,7 @@ const { localStorage } = window;
 })
 export class ShopSingleService {
 
-  RelatedProducts:Product[]=[];
+  RelatedProducts:ShopProduct[]=[];
   
   RecommendedProducts:RecommendedProduct[]=[];
 
@@ -30,7 +30,7 @@ export class ShopSingleService {
     this.RecommendedProducts=this.RecommendProducts(this.ShopSrv.products)
    }
 
-  SelectRelatedProducts(product:Product)
+  SelectRelatedProducts(product:ShopProduct)
 {
   if(this.product.image!=null)
   {
@@ -40,17 +40,17 @@ export class ShopSingleService {
   }
 }
 
-  RecommendProducts(arr: Product[]):RecommendedProduct[]
+  RecommendProducts(arr: ShopProduct[]):RecommendedProduct[]
   {
     var data = arr.filter((p)=>{return p.name!=this.product.name});
     var shuffled = data.sort(() => 0.5 - Math.random()).map(
-      (product: Product) => {
+      (product: ShopProduct) => {
         var recommendedProduct = new RecommendedProduct();
         recommendedProduct.category = product.category;
         recommendedProduct.name = product.name;
         recommendedProduct.price = product.price;
         recommendedProduct.description = product.description;
-        recommendedProduct.image = product.image;
+        recommendedProduct.imageUrl = product.imageUrl;
         recommendedProduct.quantity = product.quantity;
         return recommendedProduct;
       }

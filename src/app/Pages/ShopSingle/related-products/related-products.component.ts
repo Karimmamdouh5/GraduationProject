@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/Classes/category';
-import { Product } from 'src/app/Classes/product';
+import { ShopProduct } from 'src/app/Classes/ShopProduct';
 import { ShopSingleService } from 'src/app/Services/shop-single.service';
 import { ShopService } from 'src/app/Services/shop.service';
 
@@ -15,7 +15,7 @@ export class RelatedProductsComponent {
 
 forwardDisable=false;
 BackwardDisable=false;
-ViewProducts:Product[]=[]
+ViewProducts:ShopProduct[]=[]
 
 constructor(public ShopSingleSrv:ShopSingleService,public ShopSrv:ShopService,public router:Router)
 {
@@ -50,7 +50,7 @@ PaginateBackward()
   }
 }
 
-NavigateToShopSingle(product:Product)
+NavigateToShopSingle(product:ShopProduct)
 {
     this.ShopSingleSrv.product=product;
     this.router.navigate(['/ShopSingle']);

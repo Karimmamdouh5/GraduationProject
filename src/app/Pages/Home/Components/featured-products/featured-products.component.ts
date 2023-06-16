@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/Classes/category';
-import { Product } from 'src/app/Classes/product';
+import { ShopProduct } from 'src/app/Classes/ShopProduct';
 import { ShopSingleService } from 'src/app/Services/shop-single.service';
 import { Router } from '@angular/router';
 
@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class FeaturedProductsComponent {
 
-  products:Product[]=[
+  products:ShopProduct[]=[
     {
     /*Image: "core i5.jpg",
     NAME:"core i5",
     Price:"6400"*/
-    image: "core i5.png",
+    imageUrl: "core i5.png",
     name:"core i5",
     price:6400,
     description:``,
@@ -29,7 +29,7 @@ export class FeaturedProductsComponent {
       /*Image: "ram1.png",
       NAME:"AORUS RGB Memory DDR4 16GB (2x8GB) ",
       Price:"3000"*/
-      image: "ram1.png",
+      imageUrl: "ram1.png",
       name:"AORUS RGB Memory DDR4 16GB (2x8GB)",
       price:3000,
       description:``,
@@ -41,7 +41,7 @@ export class FeaturedProductsComponent {
         /*Image: "gpu1.jpg",
         NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
         Price:"57000"*/
-        image: "gpu1.jpg",
+        imageUrl: "gpu1.jpg",
         name:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
         price:57000,
         description:``,
@@ -56,7 +56,7 @@ export class FeaturedProductsComponent {
         Price:"57000"
         */
 
-        image: "gpu1.jpg",
+        imageUrl: "gpu1.jpg",
         name:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
         price:57000,
         description:``,
@@ -71,7 +71,7 @@ export class FeaturedProductsComponent {
       Price:"57000"
       */
 
-      image: "gpu1.jpg",
+      imageUrl: "gpu1.jpg",
       name:"Test",
       price:57000,
       description:``,
@@ -86,7 +86,7 @@ export class FeaturedProductsComponent {
     Price:"57000"
     */
 
-    image: "gpu1.jpg",
+    imageUrl: "gpu1.jpg",
     name:"Test",
     price:57000,
     description:``,
@@ -101,7 +101,7 @@ export class FeaturedProductsComponent {
       Price:"57000"
       */
 
-      image: "gpu1.jpg",
+      imageUrl: "gpu1.jpg",
       name:"Test",
       price:57000,
       description:``,
@@ -111,7 +111,7 @@ export class FeaturedProductsComponent {
 
 forwardDisable=false;
 BackwardDisable=false;
-ViewProducts:Product[]=[]
+ViewProducts:ShopProduct[]=[]
 
 constructor(public ShopSingleSrv:ShopSingleService,public router:Router)
 {
@@ -139,7 +139,7 @@ PaginateBackward()
   }
 }
 
-NavigateToShopSingle(product:Product)
+NavigateToShopSingle(product:ShopProduct)
 {
     this.ShopSingleSrv.product=product;
     this.router.navigate(['/ShopSingle']);

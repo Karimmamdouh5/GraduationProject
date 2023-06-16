@@ -8,7 +8,7 @@ import { MyResponse } from '../Classes/Myresponse';
 })
 export class UserService {
   ApiUrl='http://gradprojbackend3-001-site1.atempurl.com/api';
- // ApiUrl='https://localhost:7202/api'
+ // ApiUrl='https://localhost:7078/api'
   header:HttpHeaders=new HttpHeaders();
   user:any;
   constructor(public Http:HttpClient)

@@ -1,10 +1,10 @@
-import { Product } from "./product";
+import { ShopProduct } from "./ShopProduct";
 
 export class LookupDto 
 {
     id=0;
     name='';
-    products:Product[]=[];
+    products:ShopProduct[]=[];
     selectedvalue='';
     isPcComponent=false;
 }

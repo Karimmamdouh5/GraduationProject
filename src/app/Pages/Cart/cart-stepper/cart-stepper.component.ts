@@ -2,6 +2,7 @@ import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatStepper } from '@angular/material/stepper';
+import { AddOrderRequest } from 'src/app/Classes/add-order-request';
 import { AddUserRequest } from 'src/app/Classes/add-user-request';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -19,8 +20,7 @@ export class CartStepperComponent
   Username='';
   Password='';
 
-  
-
+  Order: AddOrderRequest = new AddOrderRequest();
   CreditpanelOpenState = false;
   isCreditPayment=false;
   isCashPayment=false;
@@ -31,12 +31,15 @@ export class CartStepperComponent
   SignUpShow=false;
   user:AddUserRequest=new AddUserRequest();
   currentStepIndex:number=0;
+  EmailCheckError='';
+  PasswordCheckError='';
+  ConfirmPasswordError='';
 
   @ViewChild('stepper') stepper: MatStepper|undefined;
   @ViewChild('creditPanel') creditPanel: MatExpansionPanel | undefined;
   @ViewChild('cashPanel') cashPanel: MatExpansionPanel | undefined;
 
- 
+  
 
   isLinear = true;
 
@@ -83,6 +86,8 @@ export class CartStepperComponent
               icon: 'success',
               confirmButtonText: 'OK'
             }); 
+            console.log(this.user);
+            
             this.currentStepIndex++;
             
           }
@@ -144,14 +149,38 @@ export class CartStepperComponent
     this.SignUpShow=false;
   }
   AddUser() {
-    // var fd = new FormData();
-    // fd.append('image',this.selectedFile,this.selectedFile.name);
-    // fd.append('email',this.user.email);
-    // this.user.isCustomer=true;
-   
-    console.log(this.user);
     this.user.isCustomer=true;
+    this.Username='';
+    this.Password='';
     
+    var EmailCheckMessage=this.CheckEmail(this.user.email);
+    var PasswordCheckMessage = this.CheckPassword(this.user.password);
+    if(EmailCheckMessage!='Ok')
+    {
+      
+      this.EmailCheckError=EmailCheckMessage;
+      console.log(this.EmailCheckError);
+
+    }
+
+    if(PasswordCheckMessage!='Ok')
+    {
+      
+      this.PasswordCheckError=PasswordCheckMessage;
+      console.log(this.PasswordCheckError);
+
+    }
+    if(this.user.password!=this.user.confirmPassword)
+    {
+      this.ConfirmPasswordError='Password doesnt match';
+      console.log(this.ConfirmPasswordError);
+      
+    }
+else
+    {
+      this.ConfirmPasswordError='';
+      this.EmailCheckError='';
+      this.PasswordCheckError='';
     this.UserSrv.AddUser(this.user).subscribe(
      firstresponse => {
    
@@ -165,8 +194,9 @@ export class CartStepperComponent
              title: 'Message!',
              text: firstresponse.message,
              icon: 'success',
-             confirmButtonText: 'OK'
-           });
+             confirmButtonText: 'OK',
+             
+           }).then(()=>{this.SignUpShow=false;this.user=new AddUserRequest()});
          }
 
        }  
@@ -184,6 +214,8 @@ export class CartStepperComponent
        }); 
      }
      );
+
+    }
   }
   CreditPaymentToggle()
   {
@@ -234,20 +266,91 @@ export class CartStepperComponent
     }
     else
     {
-      //submit order
+      this.Order.deliveryAddress=this.thirdFormGroup.controls.BuildingNumber.value+' , '+this.thirdFormGroup.controls.StreetName.value+' , '+this.thirdFormGroup.controls.DistrictName.value;
+      this.Order.isCashPayment=this.isCashPayment;
+      this.Order.orderAmount=this.CartSrv.TotalPrice;
+      for (let index = 0; index < this.CartSrv.CartItems.length; index++)
+      {
+        console.log(this.CartSrv.CartItems[index]);
+        
+        var obj ={id:0,shopProduct:this.CartSrv.CartItems[index],Quantity:this.CartSrv.CartItems[index].quantity,}
+        this.Order.orderItems.push(obj);  
+      }
+      //this.Order.orderItems=this.CartSrv.CartItems;
+      this.Order.customer.id=this.UserSrv.user.id;
+      this.Order.customer.FirstName=this.UserSrv.user.firstName;
+      this.Order.customer.LastName=this.UserSrv.user.lastName;
+      this.Order.creditData.expiryDate=this.secondFormGroup.controls.ExpiryDateMonth.value+'/'+this.secondFormGroup.controls.ExpiryDateYear.value;
 
-      Swal.fire
-      ({
-        title: 'Message!',
-        text: 'Order submitted successfully !',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });  
+      console.log(this.Order);
+      
+      this.CartSrv.OrderSubmit(this.Order).subscribe(
+        response=>
+        {
+          if(response.isSuccess==true)
+          {
+            Swal.fire
+            ({
+              title: 'Message!',
+              text: 'Order submitted successfully !',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            }); 
+          }
+          else
+          {
+            Swal.fire
+            ({
+              title: 'Message!',
+              text: 'Something wrong happend , please try again later',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            }); 
+          }
+        },
+        error=>
+        {
+          Swal.fire
+          ({
+            title: 'Message!',
+            text: error.error[0],
+            icon: 'error',
+            confirmButtonText: 'OK'
+          }); 
+        }
+        
+        );
+        
+ 
     }
   }
   Back()
   {
     this.currentStepIndex--;
   }
-
+  CheckPassword(text: string): string 
+  {
+    const capitalRegex = /[A-Z]/;
+    const specialRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    const numberRegex = /[0-9]/;
+    
+    var CapitalResult=capitalRegex.test(text) && specialRegex.test(text) && numberRegex.test(text);
+    if(CapitalResult==false)
+    {
+      return 'The Password must contain at least a capital letter and a speacial character and one number '
+    }
+    else
+    {
+      return 'Ok'
+    }
+  }
+  CheckEmail(email: string): string {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var EmailCheckResult=emailRegex.test(email);
+    if(EmailCheckResult==false)
+    {
+      return 'Your Email should be like this : example@example.com';
+    }
+    else{ return 'Ok'}
+  }
 }

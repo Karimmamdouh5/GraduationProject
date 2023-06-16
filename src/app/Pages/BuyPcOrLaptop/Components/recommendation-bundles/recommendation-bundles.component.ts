@@ -1,5 +1,5 @@
 import { RecommendationBundles } from './../../../../Classes/recommendation-bundles';
-import { Product } from './../../../../Classes/product';
+import { ShopProduct } from './../../../../Classes/ShopProduct';
 import { CartService } from 'src/app/Services/cart.service';
 import { BundelsRecommendationService } from './../../../../Services/bundels-recommendation.service';
 import { Component } from '@angular/core';

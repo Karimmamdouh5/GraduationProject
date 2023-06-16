@@ -2,7 +2,7 @@ import { ProductDto } from './../Classes/product-dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Product } from '../Classes/product';
+import { ShopProduct } from '../Classes/ShopProduct';
 import { MyResponse } from '../Classes/Myresponse';
 import { MatPaginator } from '@angular/material/paginator';
 import { LookupDto } from '../Classes/lookup-dto';
@@ -17,9 +17,9 @@ export class ShopService
 {
   @ViewChild(MatPaginator, { static: true })paginator!: MatPaginator;
 
-   FirstPage:Product[]=[]
-   products:Product[]=[];
-   filteredProducts:Product[]=[];
+   FirstPage:ShopProduct[]=[]
+   products:ShopProduct[]=[];
+   filteredProducts:ShopProduct[]=[];
    ProductsCategories:LookupDto[]=[];
    Category='';
    SearchText='';

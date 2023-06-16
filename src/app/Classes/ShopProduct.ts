@@ -1,7 +1,7 @@
 import { Category } from './category';
-export class Product
+export class ShopProduct
 {
-    image= "";
+    imageUrl= "";
     name="";
     price=0;
     description=``;

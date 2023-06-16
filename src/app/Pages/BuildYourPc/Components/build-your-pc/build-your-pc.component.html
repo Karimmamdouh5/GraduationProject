@@ -130,7 +130,7 @@
                             <mat-select (click)="this.Filter()" (selectionChange)="this.ShopSrv.ProductsCategories[i].selectedvalue = $event.value" placeholder="select an option" [(ngModel)]="this.ShopSrv.ProductsCategories[i].selectedvalue">
                               <input class="mat-elevation-z8" (input)="this.FilterByText(category,this.SearchText)" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [(ngModel)]="this.SearchText" >
                               <mat-option (click)="this.Binding(item)" *ngFor="let item of this.category.products; let index = index" [value]="item.name">
-                                <img style="width: 40px;height: 25px;" [src]="item.image">
+                                <img style="width: 40px;height: 25px;" [src]="item.imageUrl">
                                 {{item.name}}
                               </mat-option>
                             </mat-select>

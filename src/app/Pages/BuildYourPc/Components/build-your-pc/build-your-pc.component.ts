@@ -1,4 +1,4 @@
-import { Product } from './../../../../Classes/product';
+import { ShopProduct } from './../../../../Classes/ShopProduct';
 import { Component } from '@angular/core';
 import { Builtpc } from 'src/app/Classes/builtpc';
 import { LookupDto } from 'src/app/Classes/lookup-dto';
@@ -17,7 +17,7 @@ export class BuildYourPcComponent
 maintrial:any=[];
 Pc:Builtpc=new Builtpc();
 
-Products:Product[]=[];
+Products:ShopProduct[]=[];
 
 SearchText='';
 
@@ -31,9 +31,9 @@ constructor(public ShopSrv:ShopService,public CartSrv:CartService)
       this.ShopSrv.EndPointProducts.data=x.data;
       this.ShopSrv.EndPointProducts.data.forEach(item=>
         {
-          var prod : Product= new Product();
+          var prod : ShopProduct= new ShopProduct();
           prod.category=x.data[x.data.indexOf(item)].category;
-          prod.image=x.data[x.data.indexOf(item)].imageUrl;
+          prod.imageUrl=x.data[x.data.indexOf(item)].imageUrl;
           prod.name=x.data[x.data.indexOf(item)].name;
           prod.price=x.data[x.data.indexOf(item)].price;
           prod.quantity=x.data[x.data.indexOf(item)].Quantity;
@@ -83,7 +83,7 @@ Filter()
   }
     //this.ShopSrv.ProductsCategories[this.ShopSrv.ProductsCategories.indexOf(this.ShopSrv.ProductsCategories.filter((p)=>{return p.name==category.name})[0])]=category;
  }
- Binding(item:Product)
+ Binding(item:ShopProduct)
  {  
   var existitem=this.maintrial.filter((i: { name: string; })=>{return i.name.trim().toUpperCase()==item.category.name.trim().toUpperCase()});  
   if(existitem.length!=0)
@@ -131,7 +131,7 @@ Filter()
       {
         Pc.price=Pc.price+i.price;
       }
-      Pc.image=Pc.ProductsList.filter((i)=>i.category.name=="Case")[0].image;
+      Pc.imageUrl=Pc.ProductsList.filter((i)=>i.category.name=="Case")[0].imageUrl;
       this.CartSrv.addToCart(Pc,1);
       this.CartSrv.openSnackBar();
   }

@@ -1,7 +1,7 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
-import { Product } from 'src/app/Classes/product';
+import { ShopProduct } from 'src/app/Classes/ShopProduct';
 import { ShopService } from 'src/app/Services/shop.service';
 @Component({
   selector: 'app-shop-categories',
@@ -27,9 +27,9 @@ GetAllProducts()
       this.ShopSrv.EndPointProducts=x,
       this.ShopSrv.EndPointProducts.data.forEach(item=>
         {
-          var prod : Product= new Product();
+          var prod : ShopProduct= new ShopProduct();
           prod.category=x.data[x.data.indexOf(item)].category;
-          prod.image=x.data[x.data.indexOf(item)].imageUrl;
+          prod.imageUrl=x.data[x.data.indexOf(item)].imageUrl;
           prod.name=x.data[x.data.indexOf(item)].name;
           prod.price=x.data[x.data.indexOf(item)].price;
           prod.quantity=x.data[x.data.indexOf(item)].Quantity;

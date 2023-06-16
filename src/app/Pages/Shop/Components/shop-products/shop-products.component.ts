@@ -1,7 +1,7 @@
 import { ShopSingleService } from './../../../../Services/shop-single.service';
 import { Router } from '@angular/router';
 import { ShopService } from './../../../../Services/shop.service';
-import { Product } from './../../../../Classes/product';
+import { ShopProduct } from './../../../../Classes/ShopProduct';
 import { CartSnackBarComponent } from './../cart-snack-bar/cart-snack-bar.component';
 import { CartService } from 'src/app/Services/cart.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
@@ -22,7 +22,7 @@ export class ShopProductsComponent implements OnInit {
 
 
   @ViewChild(MatPaginator, { static: true })paginator!: MatPaginator;
-  listOfProducts:Product[] =[];
+  listOfProducts:ShopProduct[] =[];
   totalProducts: number = this.ShopSrv.products.length;
   constructor(public CartSrv:CartService,public _snackBar: MatSnackBar,public ShopSrv:ShopService , public router:Router,public ShopSingleSrv:ShopSingleService,public breakPointObserver:BreakpointObserver,
     public LoaderSrv:LoaderService)
@@ -30,7 +30,7 @@ export class ShopProductsComponent implements OnInit {
 
   }
 
-  NavigateToShopSingle(product:Product)
+  NavigateToShopSingle(product:ShopProduct)
   {
       this.ShopSingleSrv.product=product;
       localStorage.setItem('product',JSON.stringify(product));
@@ -49,9 +49,9 @@ export class ShopProductsComponent implements OnInit {
         this.ShopSrv.EndPointProducts=x,
         this.ShopSrv.EndPointProducts.data.forEach(item=>
           {
-            var prod : Product= new Product();
+            var prod : ShopProduct= new ShopProduct();
             prod.category=x.data[x.data.indexOf(item)].category;
-            prod.image=x.data[x.data.indexOf(item)].imageUrl;
+            prod.imageUrl=x.data[x.data.indexOf(item)].imageUrl;
             prod.name=x.data[x.data.indexOf(item)].name;
             prod.price=x.data[x.data.indexOf(item)].price;
             prod.quantity=x.data[x.data.indexOf(item)].Quantity;
@@ -86,7 +86,7 @@ export class ShopProductsComponent implements OnInit {
     this.totalProducts = this.ShopSrv.filteredProducts.length;
   }
 
-  getProducts(pageIndex: number,pageSize: number): Product[] {
+  getProducts(pageIndex: number,pageSize: number): ShopProduct[] {
     // Return the products for the current page
     if(pageIndex==0)
     {

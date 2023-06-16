@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShopProduct } from 'src/app/Classes/ShopProduct';
 import { Category } from 'src/app/Classes/category';
-import { Product } from 'src/app/Classes/product';
 import { RecommendedProduct } from 'src/app/Classes/recommended-product';
 import { CartService } from 'src/app/Services/cart.service';
 import { ShopSingleService } from 'src/app/Services/shop-single.service';
@@ -15,12 +15,12 @@ import Swal from 'sweetalert2';
 })
 export class RecommedntaioSectionComponent
 {
-products:Product[]=[];
+products:ShopProduct[]=[];
 forwardDisable=false;
 BackwardDisable=false;
-ViewProducts:Product[]=[];
+ViewProducts:ShopProduct[]=[];
 
-RecommendedProductsCartList:Product[]=[];
+RecommendedProductsCartList:ShopProduct[]=[];
 
 constructor(public ShopSingleSrv:ShopSingleService,public CartSrv:CartService,public ShopSrv:ShopService,public router:Router)
 {
@@ -47,7 +47,7 @@ PaginateBackward()
   }
 }
 
-NavigateToShopSingle(product:Product)
+NavigateToShopSingle(product:ShopProduct)
 {
     this.ShopSingleSrv.product=product;
     this.router.navigate(['/ShopSingle']);
@@ -57,10 +57,10 @@ SelectProduct(item:RecommendedProduct)
 {
  if(item.isChecked==true)
   {
-    var prod:Product=new Product();
+    var prod:ShopProduct=new ShopProduct();
     prod.category=item.category;
     prod.description=item.description;
-    prod.image=item.image;
+    prod.imageUrl=item.imageUrl;
     prod.name=item.name;
     prod.price=item.price;
     prod.quantity=item.quantity;
