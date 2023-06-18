@@ -24,7 +24,7 @@ SearchText='';
 
 
 constructor(public ShopSrv:ShopService,public CartSrv:CartService)
-{
+ {
   this.ShopSrv.products=[]
   this.ShopSrv.GetAllProducts().subscribe(x=>
     {
@@ -47,7 +47,7 @@ constructor(public ShopSrv:ShopService,public CartSrv:CartService)
     
     this.Filter();
 
-}
+ }
 Filter()
 {
   /*Category:string,Text:string*/ 
@@ -132,6 +132,7 @@ Filter()
         Pc.price=Pc.price+i.price;
       }
       Pc.imageUrl=Pc.ProductsList.filter((i)=>i.category.name=="Case")[0].imageUrl;
+      Pc.category.name='Pc';
       this.CartSrv.addToCart(Pc,1);
       this.CartSrv.openSnackBar();
   }

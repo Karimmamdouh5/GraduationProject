@@ -269,12 +269,23 @@ else
       this.Order.deliveryAddress=this.thirdFormGroup.controls.BuildingNumber.value+' , '+this.thirdFormGroup.controls.StreetName.value+' , '+this.thirdFormGroup.controls.DistrictName.value;
       this.Order.isCashPayment=this.isCashPayment;
       this.Order.orderAmount=this.CartSrv.TotalPrice;
+      var obj ={id:0,shopProduct:null,Builtpc:null,Quantity:0}
+
       for (let index = 0; index < this.CartSrv.CartItems.length; index++)
       {
         console.log(this.CartSrv.CartItems[index]);
-        
-        var obj ={id:0,shopProduct:this.CartSrv.CartItems[index],Quantity:this.CartSrv.CartItems[index].quantity,}
-        this.Order.orderItems.push(obj);  
+        if(this.CartSrv.CartItems[index].ProductsList!=null)
+        {
+           obj ={id:0,shopProduct:null,Builtpc:this.CartSrv.CartItems[index],Quantity:this.CartSrv.CartItems[index].quantity}
+          this.Order.orderItems.push(obj);  
+
+        }
+        else
+        {
+           obj ={id:0,shopProduct:this.CartSrv.CartItems[index],Builtpc:null,Quantity:this.CartSrv.CartItems[index].quantity}
+           this.Order.orderItems.push(obj);  
+
+        }
       }
       //this.Order.orderItems=this.CartSrv.CartItems;
       this.Order.customer.id=this.UserSrv.user.id;
@@ -313,7 +324,7 @@ else
           Swal.fire
           ({
             title: 'Message!',
-            text: error.error[0],
+            text: error.error,
             icon: 'error',
             confirmButtonText: 'OK'
           }); 

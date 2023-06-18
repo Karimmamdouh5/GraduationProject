@@ -1,3 +1,4 @@
+import { Builtpc } from "./builtpc";
 import { CreditData } from "./credit-data";
 import { Customer } from "./customer";
 import { ShopProduct } from "./ShopProduct";
@@ -5,7 +6,7 @@ import { ShopProduct } from "./ShopProduct";
 
 export class OrderItems 
 {
-    id:number=0;shopProduct:ShopProduct=new ShopProduct;Quantity:number=0
+    id:number=0;shopProduct:any|undefined;Builtpc:any|undefined;Quantity:number=0
 }
 
 export class AddOrderRequest 

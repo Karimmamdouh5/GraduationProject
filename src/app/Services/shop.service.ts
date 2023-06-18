@@ -56,7 +56,9 @@ export class ShopService
     console.log(SearchText);
     console.log(this.Category);
 
-    this.filteredProducts=this.products
+    this.filteredProducts=this.products;
+    console.log(this.filteredProducts);
+    
     this.paginator.length=this.filteredProducts.length;
 
     if(Category!=''&&SearchText!=null)
@@ -72,7 +74,7 @@ export class ShopService
     }
     else
     {
-      this.filteredProducts= this.filteredProducts.filter((x)=>{return x.category.name===Category});
+      this.filteredProducts= this.filteredProducts.filter((x)=>{return x.category.name==this.Category});
       this.paginator.length=this.filteredProducts.length;
     }
   }

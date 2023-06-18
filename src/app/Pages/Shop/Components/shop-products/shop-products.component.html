@@ -13,6 +13,7 @@
   </div>
 
     <div class="row">
+
       <div class="col-md-4" *ngFor="let item of this.ShopSrv.filteredProducts">
 
           <div class="card mb-4 product-wap rounded-0">
@@ -51,6 +52,7 @@
               </div>
           </div>
       </div>
+      
       <mat-paginator [pageSizeOptions]="[9,12,15,18,21,24,27]" (page)="paginate($event)" >
       </mat-paginator>
       <!--
