@@ -76,7 +76,7 @@
         <label>Email <span style="color:red">(*)</span> : </label>
         <br>
         <input [(ngModel)]="this.user.email" [ngModelOptions]="{standalone:true}" class="ml-2" style="width: 98.5%;" type="email"/>
-        <span style="color:red" *ngIf="this.EmailCheckError!=''">{{this.EmailCheckError}}</span>
+        <span style="color:red" *ngIf="this.EmailCheckError!='Ok'">{{this.EmailCheckError}}</span>
       </div>
 
     </div>
@@ -86,7 +86,7 @@
         <label>Password <span style="color:red">(*)</span> : </label>
         <br>
         <input [(ngModel)]="this.user.password" [ngModelOptions]="{standalone:true}" class="ml-2" style="width: 98.5%;" type="password"/>
-        <span style="color:red" *ngIf="this.PasswordCheckError!=''">{{this.PasswordCheckError}}</span>
+        <span style="color:red" *ngIf="this.PasswordCheckError!='Ok'">{{this.PasswordCheckError}}</span>
       </div>
 
     </div>
@@ -96,7 +96,7 @@
         <label>Confirm password <span style="color:red">(*)</span> : </label>
         <br>
         <input [(ngModel)]="this.user.confirmPassword" [ngModelOptions]="{standalone:true}" class="ml-2" style="width: 98.5%;" type="password"/>
-      <span style="color: red;" *ngIf="this.ConfirmPasswordError!=''">{{this.ConfirmPasswordError}}</span>
+      <span style="color: red;" *ngIf="this.ConfirmPasswordError!='Ok'">{{this.ConfirmPasswordError}}</span>
       </div>
 
     </div>
@@ -259,7 +259,6 @@
       </div>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="onNextClick()">Next</button>
       </div>
   </mat-step>

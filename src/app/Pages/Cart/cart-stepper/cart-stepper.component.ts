@@ -51,7 +51,7 @@ export class CartStepperComponent
     }  
    }
 
-   public firstFormGroup = this._formBuilder.group({
+  public firstFormGroup = this._formBuilder.group({
     username: ['', Validators.required],
     password:['',Validators.required]
   });
@@ -162,6 +162,10 @@ export class CartStepperComponent
       console.log(this.EmailCheckError);
 
     }
+    if(EmailCheckMessage=='Ok')
+    {
+      this.EmailCheckError='';
+    }
 
     if(PasswordCheckMessage!='Ok')
     {
@@ -170,13 +174,22 @@ export class CartStepperComponent
       console.log(this.PasswordCheckError);
 
     }
+    if(PasswordCheckMessage=='Ok')
+    {
+      this.PasswordCheckError='';
+    }
     if(this.user.password!=this.user.confirmPassword)
     {
       this.ConfirmPasswordError='Password doesnt match';
       console.log(this.ConfirmPasswordError);
       
     }
-else
+    if(this.user.password==this.user.confirmPassword)
+    {
+      this.ConfirmPasswordError='';
+
+    }
+    if(EmailCheckMessage=='Ok'&&PasswordCheckMessage=='Ok'&&this.user.password==this.user.confirmPassword)
     {
       this.ConfirmPasswordError='';
       this.EmailCheckError='';

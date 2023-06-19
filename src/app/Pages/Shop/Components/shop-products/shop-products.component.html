@@ -21,11 +21,6 @@
                   <img class="card-img rounded-0 img-fluid" src="{{item.imageUrl}}">
                   <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                       <ul class="list-unstyled">
-                          <li><a class="btn btn-primary text-white" href="shop-single.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                          </svg>
-                        </a></li>
                           <li><a class="btn btn-primary text-white mt-2" (click)="this.NavigateToShopSingle(item)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -55,10 +50,6 @@
       
       <mat-paginator [pageSizeOptions]="[9,12,15,18,21,24,27]" (page)="paginate($event)" >
       </mat-paginator>
-      <!--
 
-      <p-paginator [rows]="10" [totalRecords]="this.totalProducts" [first]="this.first" (onPageChange)="this.paginate($event)">
-      </p-paginator>
--->
     </div>
 

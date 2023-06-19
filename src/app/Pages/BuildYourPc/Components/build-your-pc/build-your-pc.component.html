@@ -18,111 +18,7 @@
                       <mat-form-field style="margin-left: 40px;">
                         <input matInput placeholder="Enter your pc name" [(ngModel)]="this.Pc.name">
                       </mat-form-field>
-<!--                      <ul>
 
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Motherboard<span style="color: red;"> *</span></mat-label>
-                        <mat-form-field style="margin-left: 10px;">
-                          <mat-select (click)="this.Filter('Motherboard','');" placeholder="select an option">
-                            <input (input)="this.Filter('Motherboard',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                            <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                              <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                              {{item.name}}
-                            </mat-option>
-                          </mat-select>
-                          </mat-form-field>
-
-                        <mat-label style="font-size: large;" class=" fw-bold mb-0 text-black">Processor<span style="color: red;"> *</span></mat-label>
-                        <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Processor','');" placeholder="select an option">
-                          <input (input)="this.Filter('Processor',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">RAM<span style="color: red;"> *</span></mat-label>
-                      <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Ram','');"  placeholder="select an option" >
-                          <input (input)="this.Filter('Ram',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-                        </mat-select>
-
-                      </mat-form-field>
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Storage<span style="color: red;"> *</span></mat-label>
-                        <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Storage','');" placeholder="select an option">
-
-                          <input (input)="this.Filter('Storage',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-
-                        </mat-select>
-
-                        </mat-form-field>
-
-                      <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Case<span style="color: red;"> *</span></mat-label>
-                      <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Case','');"  placeholder="select an option">
-
-                          <input (input)="this.Filter('Case',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-
-                        </mat-select>
-
-                      </mat-form-field>
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Monitor<span style="color: red;"> *</span></mat-label>
-                        <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Monitor','');"  placeholder="select an option">
-                          <input (input)="this.Filter('Monitor',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-                        </mat-select>
-
-                        </mat-form-field>
-
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Power supply<span style="color: red;"> *</span></mat-label>
-                        <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Power supply','');" placeholder="select an option">
-                          <input (input)="this.Filter('Power supply',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-                        </mat-select>
-
-                        </mat-form-field>
-
-                        
-                        <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">Cooler<span style="color: red;"> *</span></mat-label>
-                        <mat-form-field style="margin-left: 10px;">
-                        <mat-select (click)="this.Filter('Cooler','');" placeholder="select an option">
-                          <input (input)="this.Filter('Cooler',$event.target.value);" class="mat-elevation-z8" style="background-color: white;border: 1px solid balck;border-radius: 10px;" matInput type="search" [ngModel]="this.SearchText" >
-                          <mat-option (click)="this.Binding(item)" *ngFor="let item of this.Products" [value]="item.name">
-                            <img style="width: 40px;height: 25px;" src="{{item.image}}">
-                            {{item.name}}
-                          </mat-option>
-                        </mat-select>
-
-                        </mat-form-field>
-
-                      </ul>
-                    
--->
- 
                       <ul>
                         <div *ngFor="let category of this.ShopSrv.ProductsCategories;let i = index">
                           <mat-label style="font-size: large;" class="fw-bold mb-0 text-black">{{category.name}}<span style="color: red;"> *</span></mat-label>
@@ -143,15 +39,28 @@
 
                     <section style="text-align: center;margin-left: 100px;" class="SummarySection">
                       <div class="row">
+                        <!---->
+
+                        <table>
+                          <tr>
+                            <th>Category</th>
+                            <th>Product name</th>
+                            <th>Price</th>
+                          </tr>
+                          <tr *ngFor="let Comp of this.maintrial">
+                            <td>{{Comp.name}}</td>
+                            <td>{{Comp.itemname}}</td>
+                            <td>{{Comp.itemprice}}</td>
+                          </tr>
+                        </table>
+                        <!--
                         <div class="col-md-3" style="text-align: center;">
                           <h1 style="font-weight: bolder;">Category</h1>
-                         <!--
-                         <h3 style="font-weight: bolder;" *ngFor="let Comp of this.MainComponents"> {{Comp}} </h3>
-                         --> 
 
                          <h3 style="font-weight: bolder;" *ngFor="let Comp of this.maintrial"> {{Comp.name}} </h3>
 
                         </div>
+
                         <div class="col-md-3"  style="text-align: center;">
                           <h1 style="font-weight: bolder;">Product name</h1>
 
@@ -162,6 +71,8 @@
                           <h1 style="font-weight: bolder;">Price</h1>
                           <h3 *ngFor="let Comp of this.maintrial">{{Comp.itemprice}}</h3>
                         </div>
+                        -->
+
                       </div>
                       <button mat-fab extended color="primary" (click)="this.addPcToCart(this.Pc)">
                         <span style="font-size: large;">Add to cart</span>

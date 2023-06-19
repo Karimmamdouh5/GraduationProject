@@ -12,102 +12,55 @@ import { Router } from '@angular/router';
 })
 export class FeaturedProductsComponent {
 
-  products:ShopProduct[]=[
+  products:ShopProduct[]=
+  [
     {
-    /*Image: "core i5.jpg",
-    NAME:"core i5",
-    Price:"6400"*/
-    imageUrl: "core i5.png",
-    name:"core i5",
-    price:6400,
-    description:``,
-    quantity:0,
-    category:new Category()
-    }
-    ,
-    {
-      /*Image: "ram1.png",
-      NAME:"AORUS RGB Memory DDR4 16GB (2x8GB) ",
-      Price:"3000"*/
-      imageUrl: "ram1.png",
-      name:"AORUS RGB Memory DDR4 16GB (2x8GB)",
-      price:3000,
+      imageUrl: "https://live.staticflickr.com/65535/52756886029_c88b750542_w.jpg",
+      name:"intel core i9",
+      price:6400,
       description:``,
       quantity:0,
       category:new Category()
     }
     ,
     {
-        /*Image: "gpu1.jpg",
-        NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-        Price:"57000"*/
-        imageUrl: "gpu1.jpg",
-        name:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-        price:57000,
-        description:``,
-        quantity:0,
-        category:new Category()
-    }
-    ,
-    {
-        /*
-        Image: "gpu1.jpg",
-        NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-        Price:"57000"
-        */
-
-        imageUrl: "gpu1.jpg",
-        name:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-        price:57000,
-        description:``,
-        quantity:0,
-        category:new Category()
-    }
-    ,
-    {
-      /*
-      Image: "gpu1.jpg",
-      NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-      Price:"57000"
-      */
-
-      imageUrl: "gpu1.jpg",
-      name:"Test",
-      price:57000,
+      imageUrl: "https://live.staticflickr.com/65535/52756886009_0c5a08410f_w.jpg",
+      name:"TEAM PC DARK 8G",
+      price:850,
       description:``,
       quantity:0,
       category:new Category()
     }
     ,
     {
-    /*
-    Image: "gpu1.jpg",
-    NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-    Price:"57000"
-    */
-
-    imageUrl: "gpu1.jpg",
-    name:"Test",
-    price:57000,
-    description:``,
-    quantity:0,
-    category:new Category()
-    }
-    ,
-    {
-      /*
-      Image: "gpu1.jpg",
-      NAME:"GIGABYTE AORUS GeForce RTX 4080 16GB MASTER",
-      Price:"57000"
-      */
-
-      imageUrl: "gpu1.jpg",
-      name:"Test",
-      price:57000,
+      imageUrl: "https://live.staticflickr.com/65535/52757045665_debcddb3fa_w.jpg",
+      name:"Gigabyte B450M S2H",
+      price:2800,
       description:``,
       quantity:0,
       category:new Category()
-    }];
+    }
+    ,
+    {
+
+      imageUrl: "https://live.staticflickr.com/65535/52756101147_323babb94b_w.jpg",
+      name:"ASUS Cerberus GeForce® GTX 1050 Ti OC Edition",
+      price:4500,
+      description:``,
+      quantity:0,
+      category:new Category()
+    }
+    ,
+    {
+
+      imageUrl: "https://live.staticflickr.com/65535/52757124123_91186ae59a_w.jpg",
+      name:"Air Cooling Antec A400i",
+      price:1100,
+      description:``,
+      quantity:0,
+      category:new Category()
+    }
+  ];
 
 forwardDisable=false;
 BackwardDisable=false;
