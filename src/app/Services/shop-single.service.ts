@@ -23,7 +23,6 @@ export class ShopSingleService {
     if(productstring!=null)
     {
     this.product=JSON.parse(productstring);
-    console.log(this.product);
     
     }
     this.SelectRelatedProducts(this.product);

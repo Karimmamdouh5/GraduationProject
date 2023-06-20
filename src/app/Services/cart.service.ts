@@ -21,8 +21,8 @@ export class CartService {
   }
 
 
-ApiUrl='https://localhost:7078/api';
-//ApiUrl='http://gradprojbackend3-001-site1.atempurl.com/api';
+//ApiUrl='https://localhost:7078/api';
+ApiUrl='http://gradprojbackend3-001-site1.atempurl.com/api';
 
 CartItems:any[]=[];
 TotalPrice=0;
@@ -93,9 +93,7 @@ openSnackBar()
 }
 
 OrderSubmit(Model:AddOrderRequest):Observable<MyResponse>
-{
-  console.log(this.CartItems);
-  
+{  
   return this.Http.post<MyResponse>(this.ApiUrl+'/Orders/AddOrder',Model);
 }
 

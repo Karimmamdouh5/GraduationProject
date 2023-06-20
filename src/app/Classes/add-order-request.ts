@@ -6,7 +6,7 @@ import { ShopProduct } from "./ShopProduct";
 
 export class OrderItems 
 {
-    id:number=0;shopProduct:any|undefined;Builtpc:any|undefined;Quantity:number=0
+    id:number=0;shopProduct:any|undefined=null;Builtpc:any|undefined=null;Quantity:number=0
 }
 
 export class AddOrderRequest 
@@ -18,7 +18,7 @@ export class AddOrderRequest
     orderAmount:number=0;
     isCashPayment:boolean=false;
     orderStatus={id:0,name:'Pending'};
-    creditData:CreditData=new CreditData();
+    creditData:any|undefined=null;
     orderItems:OrderItems[]=[];
 }
 

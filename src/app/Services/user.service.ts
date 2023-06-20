@@ -16,7 +16,6 @@ export class UserService {
 
    AddUser(body:any):Observable<MyResponse>
    {
-    console.log(body);
     return this.Http.post<MyResponse>(this.ApiUrl+'/User/AddUser',body,{headers:this.header});
    }
    

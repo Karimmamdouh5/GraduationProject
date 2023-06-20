@@ -53,11 +53,8 @@ export class ShopService
   ShopProductsFilter(Category:string,SearchText?:string)
   {
     this.Category=Category;
-    console.log(SearchText);
-    console.log(this.Category);
 
     this.filteredProducts=this.products;
-    console.log(this.filteredProducts);
     
     this.paginator.length=this.filteredProducts.length;
 

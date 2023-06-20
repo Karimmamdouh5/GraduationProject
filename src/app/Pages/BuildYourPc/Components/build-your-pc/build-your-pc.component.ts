@@ -50,26 +50,10 @@ constructor(public ShopSrv:ShopService,public CartSrv:CartService)
  }
 Filter()
 {
-  /*Category:string,Text:string*/ 
   for (const category of this.ShopSrv.ProductsCategories) {
     category.products = this.ShopSrv.products.filter(product => product.category.name === category.name);
   }
-/*  var arr=this.ShopSrv.products;
-  if(Text=='')
-  {
-    console.log('text is empty');
-    
-    this.Products=arr.filter((x)=>{return x.category.name.toUpperCase().trim()==Category.toUpperCase().trim()});
-    console.log(this.Products);
-    
-  }
-  if(Text!=''&&Text!=undefined)
-  {
-    console.log('text is not empty');
 
-    this.Products=arr.filter((x)=>{return x.category.name.toUpperCase().trim()==Category.toUpperCase().trim() && x.name.toUpperCase().trim().includes(Text.toUpperCase().trim())});
-  }
-  */
  }
  FilterByText(category:LookupDto,Text:string)
  {

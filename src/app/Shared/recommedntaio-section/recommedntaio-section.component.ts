@@ -65,12 +65,10 @@ SelectProduct(item:RecommendedProduct)
     prod.price=item.price;
     prod.quantity=item.quantity;
     this.RecommendedProductsCartList.push(prod);
-    console.log(this.RecommendedProductsCartList);
   }
   else
   {
     this.RecommendedProductsCartList=this.RecommendedProductsCartList.filter((p)=>{return p.name!=item.name});
-    console.log(this.RecommendedProductsCartList);
   }
 }
 
@@ -90,7 +88,6 @@ AddProductsToCart()
   {
     this.RecommendedProductsCartList.push(this.ShopSingleSrv.product);
     this.CartSrv.addRangeToCart(this.RecommendedProductsCartList);
-    console.log(this.RecommendedProductsCartList);
     this.CartSrv.openSnackBar();
   }
 

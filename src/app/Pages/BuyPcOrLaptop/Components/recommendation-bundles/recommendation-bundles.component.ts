@@ -42,9 +42,7 @@ constructor(public RecombundelsSrv:BundelsRecommendationService,public CartSrv:C
 Product:RecommendationBundles= new RecommendationBundles();
 
 Recommend(Purp:string,DeviceType:string)
-{
-  console.log(this.RecombundelsSrv.purp);
-  
+{  
 this.RecombundelsSrv.Recommend(Purp,DeviceType);
 }
 AddToCart(item:RecommendationBundles)

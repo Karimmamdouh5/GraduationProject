@@ -86,12 +86,21 @@ export class CartStepperComponent
               icon: 'success',
               confirmButtonText: 'OK'
             }); 
-            console.log(this.user);
             
             this.currentStepIndex++;
             
           }
-          else{console.log('something wrong');}
+          else
+          {
+              Swal.fire
+              ({
+                title: 'Message!',
+                text: 'Something went wrong , please try again later',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              }); 
+            }
+          
         },
         error=>
         {
@@ -126,8 +135,7 @@ export class CartStepperComponent
     if((this.isCreditPayment==true && !haserror)||this.isCashPayment==true)
         {
           this.currentStepIndex=this.currentStepIndex+1;
-          //console.log(this.currentStepIndex);
-          //console.log(haserror);
+
         }
         else
         {
@@ -159,7 +167,6 @@ export class CartStepperComponent
     {
       
       this.EmailCheckError=EmailCheckMessage;
-      console.log(this.EmailCheckError);
 
     }
     if(EmailCheckMessage=='Ok')
@@ -171,7 +178,6 @@ export class CartStepperComponent
     {
       
       this.PasswordCheckError=PasswordCheckMessage;
-      console.log(this.PasswordCheckError);
 
     }
     if(PasswordCheckMessage=='Ok')
@@ -181,7 +187,6 @@ export class CartStepperComponent
     if(this.user.password!=this.user.confirmPassword)
     {
       this.ConfirmPasswordError='Password doesnt match';
-      console.log(this.ConfirmPasswordError);
       
     }
     if(this.user.password==this.user.confirmPassword)
@@ -199,9 +204,9 @@ export class CartStepperComponent
    
       if (firstresponse.isSuccess == true)
       {
-        {
-         if(firstresponse.isSuccess==true)
-         {         
+        
+        
+      
             Swal.fire
            ({
              title: 'Message!',
@@ -210,9 +215,9 @@ export class CartStepperComponent
              confirmButtonText: 'OK',
              
            }).then(()=>{this.SignUpShow=false;this.user=new AddUserRequest()});
-         }
 
-       }  
+
+       
       }
            
       },
@@ -286,7 +291,6 @@ export class CartStepperComponent
 
       for (let index = 0; index < this.CartSrv.CartItems.length; index++)
       {
-        console.log(this.CartSrv.CartItems[index]);
         if(this.CartSrv.CartItems[index].ProductsList!=null)
         {
            obj ={id:0,shopProduct:null,Builtpc:this.CartSrv.CartItems[index],Quantity:this.CartSrv.CartItems[index].quantity}
@@ -297,26 +301,27 @@ export class CartStepperComponent
         {
            obj ={id:0,shopProduct:this.CartSrv.CartItems[index],Builtpc:null,Quantity:this.CartSrv.CartItems[index].quantity}
            this.Order.orderItems.push(obj);  
-
         }
       }
-      //this.Order.orderItems=this.CartSrv.CartItems;
       this.Order.customer.id=this.UserSrv.user.id;
       this.Order.customer.FirstName=this.UserSrv.user.firstName;
       this.Order.customer.LastName=this.UserSrv.user.lastName;
+      if(this.secondFormGroup.controls.ExpiryDateYear.value!=''&&this.secondFormGroup.controls.ExpiryDateMonth.value!='')
+      {
       this.Order.creditData.expiryDate=this.secondFormGroup.controls.ExpiryDateMonth.value+'/'+this.secondFormGroup.controls.ExpiryDateYear.value;
-
-      console.log(this.Order);
+      }
       
-      this.CartSrv.OrderSubmit(this.Order).subscribe(
-        response=>
+      this.CartSrv.OrderSubmit(this.Order).subscribe
+      (
+        respone=>
         {
-          if(response.isSuccess==true)
+          if(respone.isSuccess==true)
           {
+            
             Swal.fire
             ({
               title: 'Message!',
-              text: 'Order submitted successfully !',
+              text: respone.message,
               icon: 'success',
               confirmButtonText: 'OK'
             }); 
@@ -331,21 +336,20 @@ export class CartStepperComponent
               confirmButtonText: 'OK'
             }); 
           }
+
         },
         error=>
         {
+          
           Swal.fire
           ({
             title: 'Message!',
-            text: error.error,
+            text: error.error[0],
             icon: 'error',
             confirmButtonText: 'OK'
-          }); 
+          });
         }
-        
-        );
-        
- 
+      ); 
     }
   }
   Back()
